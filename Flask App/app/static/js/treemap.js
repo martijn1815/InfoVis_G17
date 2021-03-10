@@ -1,83 +1,51 @@
-function get_info_on_var(variable) {
-    var rel_meta = meta_data.find(function(d) {
-        return d.Variabele == variable;
-    })
-
-    var label = rel_meta['Label_1'];
-    var definition = rel_meta['Definition'];
-
-    return [label, definition]
-}
-
-function updateArea(selectObject) {
-    selected_area = selectObject.value;
-    updatePlot();
-};
-
-function updatePlot() {
-    var fetch_url = "/d3_plot_data?area_name=" + selected_area;
-    fetch(fetch_url)
-        .then(function(response) { return response.json(); })
-        .then((data) => {
-            plot_data = data;
-            removeOldChart();
-            createNewChart();
-    });
-}
-
-function removeOldChart() {
-    d3.select("#chart_group")
-        .remove();
-}
-
 function createNewChart() {
-    var svg = d3.select(container_id)
-                .append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    console.log("TEST: treemap called");
 
-    // Read data
-    d3.csv('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_hierarchy_1level.csv', function(data) {
+    const color = d3.scaleOrdinal().range(d3.schemeCategory20c);
 
-        // stratify the data: reformatting for d3.js
-        var root = d3.stratify()
-                     .id(function(d) { return d.name; })  // Name of the entity (column name is name in csv)
-                     .parentId(function(d) { return d.parent; })  // Name of the parent (column name is parent in csv)
-                     (data);
-        root.sum(function(d) { return +d.value });  // Compute the numeric value for each entity
+    const treemap = d3.treemap().size([width, height]);
 
-        // Then d3.treemap computes the position of each element of the hierarchy
-        // The coordinates are added to the root object above
-        d3.treemap()
-          .size([width, height])
-          .padding(4)
-          (root);
+    const div = d3.select(container_id)
+                  .style("position", "relative")
+                  .style("width", (width + margin.left + margin.right) + "px")
+                  .style("height", (height + margin.top + margin.bottom) + "px")
+                  .style("left", margin.left + "px")
+                  .style("top", margin.top + "px");
 
-        console.log(root.leaves());
+    d3.json("static/test_set.json", function(error, data) {
+        if (error) throw error;
 
-        // use this information to add rectangles:
-        svg.selectAll("rect")
-           .data(root.leaves())
-           .enter()
-           .append("rect")
-           .attr('x', function (d) { return d.x0; })
-           .attr('y', function (d) { return d.y0; })
-           .attr('width', function (d) { return d.x1 - d.x0; })
-           .attr('height', function (d) { return d.y1 - d.y0; })
-           .style("stroke", "black")
-           .style("fill", "#69b3a2");
+        const root = d3.hierarchy(data, (d) => d.children)
+                       .sum((d) => d.size);
 
-        // and to add the text labels
-        svg.selectAll("text")
-           .data(root.leaves())
-           .enter()
-           .append("text")
-           .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
-           .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-           .text(function(d){ return d.data.name})
-           .attr("font-size", "15px")
-           .attr("fill", "white");
-    })
+        const tree = treemap(root);
+
+        const node = div.datum(root).selectAll(".node")
+                        .data(tree.leaves())
+                        .enter().append("div")
+                        .attr("class", "node")
+                        .style("left", (d) => d.x0 + "px")
+                        .style("top", (d) => d.y0 + "px")
+                        .style("width", (d) => Math.max(0, d.x1 - d.x0 - 1) + "px")
+                        .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px")
+                        .style("background", (d) => color(d.parent.data.name))
+                        .text((d) => d.data.name);
+
+        d3.selectAll("input").on("change", function change() {
+            const value = this.value === "count"
+                ? (d) => { return d.size ? 1 : 0;}
+                : (d) => { return d.size; };
+
+            const newRoot = d3.hierarchy(data, (d) => d.children)
+                              .sum(value);
+
+            node.data(treemap(newRoot).leaves())
+                .transition()
+                .duration(1500)
+                .style("left", (d) => d.x0 + "px")
+                .style("top", (d) => d.y0 + "px")
+                .style("width", (d) => Math.max(0, d.x1 - d.x0 - 1) + "px")
+                .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px")
+        });
+    });
 };
