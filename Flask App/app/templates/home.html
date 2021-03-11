@@ -27,12 +27,15 @@
 <script type="text/javascript">
 	///////////// SCRIPT /////////////
 
+	data = FileAttachment("static/test_set.json").json()
+
 	var container_id = "#treemap";
 	const margin = {top: 40, right: 10, bottom: 10, left: 10},
           width = 960 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
 
-    createNewChart();
+    //createNewChart();
+    createNewChart_v2()
 </script>
 
 {% endblock %}
