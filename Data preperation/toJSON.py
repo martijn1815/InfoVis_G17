@@ -41,7 +41,7 @@ def main(argv):
         json_text += '"children": ['
 
         for column in party_columns:
-            if row[column] != 0:  # Can set a threshold here
+            #if row[column] != 0:  # Can set a threshold here
                 json_text += '\n{{"name": "{0}", "votes": {1}}},'.format(column, row[column])
 
         json_text = json_text[:-1] + '\n]\n}'

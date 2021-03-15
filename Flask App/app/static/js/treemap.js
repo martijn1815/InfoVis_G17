@@ -46,7 +46,10 @@ function createTreemap() {
                         .text((d) => d.data.name);
 
         d3.selectAll("input").on("change", function change() {
-            YearID = getID(data.children, 2012);
+            var year = this.value;
+            console.log(year);
+
+            YearID = getID(data.children, year);
             TotalID = getID(data.children[YearID].children, "Totaal");
 
             const newRoot = d3.hierarchy(data.children[YearID].children[TotalID], (d) => d.children)
