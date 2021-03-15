@@ -18,10 +18,32 @@ function createNLMap() {
 
     d3.queue()
         .defer(d3.json, "https://cartomap.github.io/nl/wgs84/provincie_2021.geojson")
+        .defer(d3.csv, "static/data/netherlands_map.csv")
         .await(ready);
 
-    function ready(error, topo) {
+    function ready(error, topo, data) {
 
+        for (var i = 0; i<data.length; i++) {
+            var Province = data[i].Regio
+            var Party = data[i].Partij
+            var Stream = data[i].Stroming
+            if (Province == "'s-Hertogenbosch") {
+                Province = "Noord-Brabant"
+            }
+            if (Province == "FryslÃ¢n") {
+                Province = "Fryslân"
+            }
+            for (var j = 0; i<topo.features.length; j++) {
+                var Province_topo = topo.features[j].properties.statnaam
+                if (Province == Province_topo) {
+                    topo.features[j].properties.Party = Party
+                    topo.features[j].properties.Stream = Stream
+                    break;
+                }
+
+            }
+        }
+        console.log(topo.features)
         // Draw the map
 
         var center = d3.geoCentroid(topo)
@@ -47,6 +69,9 @@ function createNLMap() {
           .scale(scale).translate(offset);
         path = path.projection(projection);
 
+        var color = d3.scaleOrdinal()
+                .range(["rgb(255, 0, 0)", "rgb(51, 102, 255)", "rgb(0, 204, 0)", "rgb(128, 128, 128)"])
+                .domain(['Rechts', 'Centrum', 'Links', 'Overig']);
 
         svg.append("g")
             .selectAll("path")
