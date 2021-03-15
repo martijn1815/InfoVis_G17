@@ -12,7 +12,7 @@ function createNewChart() {
                   .style("left", margin.left + "px")
                   .style("top", margin.top + "px");
 
-    d3.json("static/test_set.json", function(error, data) {
+    d3.json("static/data/test_set.json", function(error, data) {
         if (error) throw error;
 
         const root = d3.hierarchy(data, (d) => d.children)
