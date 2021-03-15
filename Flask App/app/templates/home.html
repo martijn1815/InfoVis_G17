@@ -5,7 +5,11 @@
 	d3.selectAll(".nav-item").classed("active", false);
 	d3.select("#nav-link-home").classed("active", true);
 </script>
+<!-- Load CSS Files -->
 <link href="../static/css/tooltip.css" rel="stylesheet" type="text/css">
+<link href="../static/css/slider.css" rel="stylesheet" type="text/css">
+<link href="../static/css/treemap.css" rel="stylesheet" type="text/css">
+
 <script type="text/javascript" src="../static/js/tooltip.js"></script>
 
 <!-- Begin page content -->
@@ -13,18 +17,44 @@
 
 <div id="treemap_container">
     <H3>Test Treemap:</H3>
-    <form>
-        <label><input type="radio" name="mode" value="size" checked> Size</label>
-        <label><input type="radio" name="mode" value="count"> Count</label>
-    </form>
+    <div class="slidecontainer">
+        <input id="yearRange" class="slider" type="range" min="1918" max="2017" value="2017" list="volsettings">
+        <datalist id="volsettings">
+            <option>1918</option>
+            <option>1922</option>
+            <option>1925</option>
+            <option>1929</option>
+            <option>1933</option>
+            <option>1937</option>
+            <option>1946</option>
+            <option>1948</option>
+            <option>1952</option>
+            <option>1956</option>
+            <option>1959</option>
+            <option>1963</option>
+            <option>1967</option>
+            <option>1971</option>
+            <option>1972</option>
+            <option>1977</option>
+            <option>1981</option>
+            <option>1982</option>
+            <option>1986</option>
+            <option>1989</option>
+            <option>1994</option>
+            <option>1998</option>
+            <option>2002</option>
+            <option>2003</option>
+            <option>2006</option>
+            <option>2010</option>
+            <option>2012</option>
+            <option>2017</option>
+        </datalist>
+    </div>
 
     <div id="treemap"></div>
-
+    <div id="map"></div>
 </div>
 
-<div id="map_netherlands"></div>
-
-<link rel="stylesheet" type="text/css" href="../static/css/treemap.css">
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript" src="../static/js/treemap.js"></script>
 <script type="text/javascript" src="../static/js/world.js"></script>
@@ -36,12 +66,12 @@
 	//console.log(data);
 
 	var container_id = "#treemap";
+	var year = 2017;
 	const margin = {top: 40, right: 10, bottom: 10, left: 10},
           width = 960 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
 
     createTreemap();
-    createNLMap();
 </script>
 
 {% endblock %}
