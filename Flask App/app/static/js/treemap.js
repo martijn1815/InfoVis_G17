@@ -1,4 +1,4 @@
-function createNewChart() {
+function createTreemap() {
     console.log("TEST: treemap called");
 
     const color = d3.scaleOrdinal().range(d3.schemeCategory20c);
