@@ -36,16 +36,7 @@
           width = 960 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
 
-    //createNewChart();
-
-    d3.json("static/test_set.json", function(error, data) {
-        if (error) throw error;
-
-        console.log("Data loaded:");
-        console.log(data);
-
-        createNewChart_v2()
-    });
+    createNewChart();
 </script>
 
 {% endblock %}
