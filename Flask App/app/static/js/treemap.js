@@ -1,8 +1,17 @@
+function getID(d, x) {
+    var ID = 0;
+    for (var i = 0; i < Object.values(d).length; i++) {
+        if (d[i].name == x) {
+            ID = i;
+        }
+    }
+    return ID
+}
+
 function createTreemap() {
     console.log("TEST: treemap called");
 
     const color = d3.scaleOrdinal().range(d3.schemeCategory20c);
-
     const treemap = d3.treemap().size([width, height]);
 
     const div = d3.select(container_id)
@@ -15,9 +24,12 @@ function createTreemap() {
     d3.json("static/data/data.json", function(error, data) {
         if (error) throw error;
 
-        console.log(data.children.name = year);
+        console.log(data);
 
-        const root = d3.hierarchy(data, (d) => d.children)
+        var YearID = getID(data.children, 2017);
+        var TotalID = getID(data.children[YearID].children, "Totaal");
+
+        const root = d3.hierarchy(data.children[YearID].children[TotalID], (d) => d.children)
                        .sum((d) => d.votes);
 
         const tree = treemap(root);
@@ -30,16 +42,15 @@ function createTreemap() {
                         .style("top", (d) => d.y0 + "px")
                         .style("width", (d) => Math.max(0, d.x1 - d.x0 - 1) + "px")
                         .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px")
-                        .style("background", (d) => color(d.parent.data.name))
+                        .style("background", (d) => color(d.data.name))
                         .text((d) => d.data.name);
 
         d3.selectAll("input").on("change", function change() {
-            const value = this.value === "count"
-                ? (d) => { return d.votes ? 1 : 0;}
-                : (d) => { return d.votes; };
+            YearID = getID(data.children, 2012);
+            TotalID = getID(data.children[YearID].children, "Totaal");
 
-            const newRoot = d3.hierarchy(data, (d) => d.children)
-                              .sum(value);
+            const newRoot = d3.hierarchy(data.children[YearID].children[TotalID], (d) => d.children)
+                              .sum((d) => d.votes);
 
             node.data(treemap(newRoot).leaves())
                 .transition()
