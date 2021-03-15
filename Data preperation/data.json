@@ -1,0 +1,1593 @@
+{
+"name": "verkiezingsuitslag",
+"children": [
+{
+"name": "1918",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1922",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1925",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1929",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1933",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1937",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1946",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1948",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1952",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1956",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1959",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1963",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1967",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1971",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1972",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1977",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1981",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1982",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1986",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1989",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1994",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "1998",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "2002",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "2003",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "2006",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "2010",
+"children": [
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "2012",
+"children": [
+{
+"name": "'s-Hertogenbosch",
+"children": []
+},
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Niet-provinciaal ingedeeld",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+},
+{
+"name": "2017",
+"children": [
+{
+"name": "'s-Hertogenbosch",
+"children": []
+},
+{
+"name": "Bonaire",
+"children": []
+},
+{
+"name": "Drenthe",
+"children": []
+},
+{
+"name": "Flevoland",
+"children": []
+},
+{
+"name": "Fryslân",
+"children": []
+},
+{
+"name": "Gelderland",
+"children": []
+},
+{
+"name": "Groningen",
+"children": []
+},
+{
+"name": "Limburg",
+"children": []
+},
+{
+"name": "Noord-Brabant",
+"children": []
+},
+{
+"name": "Noord-Holland",
+"children": []
+},
+{
+"name": "Overijssel",
+"children": []
+},
+{
+"name": "Total",
+"children": []
+},
+{
+"name": "Utrecht",
+"children": []
+},
+{
+"name": "Zeeland",
+"children": []
+},
+{
+"name": "Zuid-Holland",
+"children": []
+}
+]
+}
+]
+}

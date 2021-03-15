@@ -5,20 +5,42 @@ Author: Martijn Schendstok
 """
 
 import sys
-import csv
+import pandas as pd
 
 
 def main(argv):
-    with open('Data/filtered_data.csv') as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        line_count = 0
-        for row in csv_reader:
-            if line_count == 0:
-                print("{}".format(", ".join(row)))
-                line_count += 1
-            else:
-                line_count += 1
-        print(f'Processed {line_count} lines.')
+    df = pd.read_csv('Data/Merged_Verkiezingsuitslag.csv')
+    df = df.groupby(['Year', 'OuderRegioNaam']).sum()
+
+    json_text = '{\n' \
+                '"name": "verkiezingsuitslag",\n' \
+                '"children": [\n'
+
+    year = 0
+    for index, row in df.iterrows():
+        #print(index[0], index[1])
+        if index[0] != year:
+            if year != 0:
+                json_text += '\n]\n},\n'
+            json_text += '{{\n' \
+                         '"name": "{0}",\n' \
+                         '"children": [\n'.format(index[0])
+            year = index[0]
+        else:
+            json_text += ',\n'
+
+        json_text += '{{\n' \
+                     '"name": "{0}",\n' \
+                     '"children": ['.format(index[1])
+
+        json_text += ']\n}'
+
+    json_text += '\n]\n}\n]\n}'
+
+    print(json_text)
+
+    with open("data.json", "w+") as f:
+        f.write(json_text)
 
 
 if __name__ == "__main__":
