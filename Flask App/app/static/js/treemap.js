@@ -12,11 +12,13 @@ function createTreemap() {
                   .style("left", margin.left + "px")
                   .style("top", margin.top + "px");
 
-    d3.json("static/data/test_set.json", function(error, data) {
+    d3.json("static/data/data.json", function(error, data) {
         if (error) throw error;
 
+        console.log(data.children.name = year);
+
         const root = d3.hierarchy(data, (d) => d.children)
-                       .sum((d) => d.size);
+                       .sum((d) => d.votes);
 
         const tree = treemap(root);
 
@@ -33,8 +35,8 @@ function createTreemap() {
 
         d3.selectAll("input").on("change", function change() {
             const value = this.value === "count"
-                ? (d) => { return d.size ? 1 : 0;}
-                : (d) => { return d.size; };
+                ? (d) => { return d.votes ? 1 : 0;}
+                : (d) => { return d.votes; };
 
             const newRoot = d3.hierarchy(data, (d) => d.children)
                               .sum(value);
