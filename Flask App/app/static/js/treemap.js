@@ -26,7 +26,8 @@ function createTreemap() {
 
         console.log(data);
 
-        var YearID = getID(data.children, 2017);
+        //var YearID = getID(data.children, 2017);
+        var YearID = 27;
         var TotalID = getID(data.children[YearID].children, "Totaal");
 
         const root = d3.hierarchy(data.children[YearID].children[TotalID], (d) => d.children)
@@ -46,10 +47,10 @@ function createTreemap() {
                         .text((d) => d.data.name);
 
         d3.selectAll("input").on("change", function change() {
-            var year = this.value;
-            console.log(year);
+            var YearID = this.value;
+            //console.log(year);
 
-            YearID = getID(data.children, year);
+            //YearID = getID(data.children, year);
             TotalID = getID(data.children[YearID].children, "Totaal");
 
             const newRoot = d3.hierarchy(data.children[YearID].children[TotalID], (d) => d.children)
