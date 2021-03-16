@@ -23,8 +23,11 @@ function createNLMap() {
 
     function ready(error, topo, data) {
 
+
+
         for (var i = 0; i<data.length; i++) {
             var Province = data[i].Regio
+
             var Party = data[i].Partij
             var Stream = data[i].Stroming
             if (Province == "'s-Hertogenbosch") {
@@ -33,9 +36,13 @@ function createNLMap() {
             if (Province == "FryslÃ¢n") {
                 Province = "Fryslân"
             }
-            for (var j = 0; i<topo.features.length; j++) {
+            for (var j = 0; j<topo.features.length; j++) {
                 var Province_topo = topo.features[j].properties.statnaam
+
                 if (Province == Province_topo) {
+                 console.log(Province)
+                    //console.log(Province)
+                    //console.log(Province_topo)
                     topo.features[j].properties.Party = Party
                     topo.features[j].properties.Stream = Stream
                     break;
@@ -43,7 +50,7 @@ function createNLMap() {
 
             }
         }
-        console.log(topo.features)
+
         // Draw the map
 
         var center = d3.geoCentroid(topo)
@@ -82,7 +89,12 @@ function createNLMap() {
             .attr("d", d3.geoPath()
                 .projection(projection)
             )
-            .attr("fill", "grey")
+            .attr("fill", function (d) {
+                var Stream = d.properties.Stream
+                return color(Stream);
+                })
+            .style("stroke", "black")
+            .style("stroke-width", "0.25");
             };
 
 };

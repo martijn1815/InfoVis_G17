@@ -52,8 +52,10 @@
     </div>
 
     <div id="treemap"></div>
-    <div id="map"></div>
+
 </div>
+
+<div id = "map_netherlands"></div>
 
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript" src="../static/js/treemap.js"></script>
@@ -72,6 +74,7 @@
           height = 500 - margin.top - margin.bottom;
 
     createTreemap();
+    createNLMap();
 </script>
 
 {% endblock %}
