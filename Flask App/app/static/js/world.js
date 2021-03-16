@@ -1,4 +1,14 @@
 console.log('testtest')
+
+function getMax(arr, prop) {
+    var max;
+    for (var i=0 ; i<arr.length ; i++) {
+        if (max == null || parseInt(arr[i][prop]) > parseInt(max[prop]))
+            max = arr[i];
+    }
+    return max;
+};
+
 function createNLMap() {
     // Setting the margin, height and width variables
 
@@ -19,41 +29,43 @@ function createNLMap() {
     d3.queue()
         .defer(d3.json, "https://cartomap.github.io/nl/wgs84/provincie_2021.geojson")
         .defer(d3.csv, "static/data/netherlands_map.csv")
+        .defer(d3.json, "static/data/data.json")
         .await(ready);
 
-    function ready(error, topo, data) {
+    function ready(error, topo, data, data2) {
 
+        var YearID = 27;
+        var DataYear = data2.children[YearID].children;
+        console.log(data2.children[YearID].children);
 
+        for (var i = 0; i<DataYear.length; i++) {
 
-        for (var i = 0; i<data.length; i++) {
-            var Province = data[i].Regio
-
-            var Party = data[i].Partij
-            var Stream = data[i].Stroming
-            if (Province == "'s-Hertogenbosch") {
-                Province = "Noord-Brabant"
+            var ProvinceData = DataYear[i].name;
+            if (ProvinceData == "'s-Hertogenbosch") {
+                ProvinceData = "Noord-Brabant"
             }
-            if (Province == "FryslÃ¢n") {
-                Province = "Fryslân"
+            if (ProvinceData == "FryslÃ¢n") {
+                ProvinceData = "Fryslân"
             }
+            //console.log(DataYear[i].children)
+            var Max = getMax(DataYear[i].children, "votes");
+
             for (var j = 0; j<topo.features.length; j++) {
-                var Province_topo = topo.features[j].properties.statnaam
+                var Province_topo = topo.features[j].properties.statnaam;
 
-                if (Province == Province_topo) {
-                 console.log(Province)
-                    //console.log(Province)
-                    //console.log(Province_topo)
-                    topo.features[j].properties.Party = Party
-                    topo.features[j].properties.Stream = Stream
+                if (ProvinceData == Province_topo) {
+
+                    topo.features[j].properties.PartyName = Max.name;
+                    topo.features[j].properties.PartyVotes= Max.votes;
+
                     break;
                 }
-
             }
-        }
+        };
 
         // Draw the map
 
-        var center = d3.geoCentroid(topo)
+        var center = d3.geoCentroid(topo);
         var scale  = 150;
         var offset = [width/2, height/2];
         var projection = d3.geoMercator().scale(scale).center(center)
@@ -76,9 +88,7 @@ function createNLMap() {
           .scale(scale).translate(offset);
         path = path.projection(projection);
 
-        var color = d3.scaleOrdinal()
-                .range(["rgb(255, 0, 0)", "rgb(51, 102, 255)", "rgb(0, 204, 0)", "rgb(128, 128, 128)"])
-                .domain(['Rechts', 'Centrum', 'Links', 'Overig']);
+        var color = d3.scaleOrdinal().range(d3.schemeCategory20c);
 
         svg.append("g")
             .selectAll("path")
@@ -90,11 +100,13 @@ function createNLMap() {
                 .projection(projection)
             )
             .attr("fill", function (d) {
-                var Stream = d.properties.Stream
+                var Stream = d.properties.PartyName
+                console.log(Stream)
                 return color(Stream);
                 })
             .style("stroke", "black")
             .style("stroke-width", "0.25");
-            };
+
+    };
 
 };
