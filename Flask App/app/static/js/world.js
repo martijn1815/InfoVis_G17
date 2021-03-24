@@ -140,6 +140,8 @@ function createNLMap(yearid) {
 
 
         d3.selectAll("#yearRange").on("change", function change() {
+            console.log("Update - Map: year");
+
             var YearID = this.value;
             d3.selectAll("#map_box").remove()
             d3.selectAll("#tooltip").remove()
