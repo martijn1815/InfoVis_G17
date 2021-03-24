@@ -68,9 +68,9 @@
         d3.selectAll("#yearRange").on("change", function change() {
             var YearID = this.value;
             updateTreemap(data, node, YearID);
-            d3.selectAll("#map_box").remove()
-            d3.selectAll("#tooltip").remove()
-            createNLMap(YearID)
+            d3.selectAll("#map_box").remove(); //Beter in your own function
+            d3.selectAll("#tooltip").remove(); //Beter in your own function
+            createNLMap(YearID);
         });
      });
 </script>
