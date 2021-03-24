@@ -32,7 +32,6 @@
 
 <div id="map_netherlands"></div>
 
-<H2 class="col-sm-12"> Political streams over the years </H2>
 <div id="stacked_bar_chart"></div>
 
 <!-- End page content -->
@@ -57,7 +56,7 @@
 	//console.log(data);
 
     createNLMap(yearid = 27);
-    //createStackedchart();
+    createStackedchart();
 
     d3.json("static/data/data.json", function(error, data) {
         if (error) throw error;
