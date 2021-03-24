@@ -9,9 +9,18 @@ function getMax(arr, prop) {
     return max;
 };
 
+function getID(d, x) {
+    var ID = 0;
+    for (var i = 0; i < Object.values(d).length; i++) {
+        if (d[i].name == x) {
+            ID = i;
+        }
+    }
+    return ID;
+};
+
 function createNLMap() {
     // Setting the margin, height and width variables
-
     // Adding a svg
     var svg = d3.select("#map_netherlands")
         .append("svg")
@@ -20,11 +29,9 @@ function createNLMap() {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top  + ")");
 
-    // Map and projection
-    //var projection = d3.geoNaturalEarth()
-    //    .scale(width / 1.3 / Math.PI)
-      //  .translate([width / 2, height / 2])
-
+    var div = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
 
     d3.queue()
         .defer(d3.json, "https://cartomap.github.io/nl/wgs84/provincie_2021.geojson")
@@ -105,8 +112,87 @@ function createNLMap() {
                 return color(Stream);
                 })
             .style("stroke", "black")
-            .style("stroke-width", "0.25");
+            .style("stroke-width", "0.25")
+            .on("mouseover", function(d) {
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                        div.html(function() {
+                        if (d.properties.Temperature)
+                        return "<strong>" + d.properties.statnaam + "<strong>"
+                        })
+                        .style("left", (d3.event.pageX + 15) + "px")
+                        .style("top", (d3.event.pageY - 50) + "px");
+                })
+                .on("mouseout", function(d) {
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
 
+
+        d3.selectAll("#yearRange").on("change", function change() {
+            var YearID = this.value;
+            var DataYear = data2.children[YearID].children;
+            console.log(YearID)
+            for (var i = 0; i<DataYear.length; i++) {
+
+                var ProvinceData = DataYear[i].name;
+                if (ProvinceData == "'s-Hertogenbosch") {
+                    ProvinceData = "Noord-Brabant"
+                }
+                if (ProvinceData == "FryslÃ¢n") {
+                    ProvinceData = "Fryslân"
+                }
+                //console.log(DataYear[i].children)
+                var Max = getMax(DataYear[i].children, "votes");
+
+                for (var j = 0; j<topo.features.length; j++) {
+                    var Province_topo = topo.features[j].properties.statnaam;
+
+                    if (ProvinceData == Province_topo) {
+
+                        topo.features[j].properties.PartyName = Max.name;
+                        topo.features[j].properties.PartyVotes= Max.votes;
+
+                        break;
+                    }
+                }
+            };
+
+             svg.append("g")
+                .selectAll("path")
+                .data(topo.features)
+                .enter()
+                .append("path")
+                // draw each country
+                .attr("d", d3.geoPath()
+                    .projection(projection)
+                )
+                .attr("fill", function (d) {
+                    var Stream = d.properties.PartyName
+                    return color(Stream);
+                    })
+                .style("stroke", "black")
+                .style("stroke-width", "0.25")
+                .on("mouseover", function(d) {
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                        div.html(function() {
+                        if (d.properties.Temperature)
+                        return "<strong>" + d.properties.statnaam + "<strong>"
+                        })
+                        .style("left", (d3.event.pageX + 15) + "px")
+                        .style("top", (d3.event.pageY - 50) + "px");
+                })
+                .on("mouseout", function(d) {
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
+
+        });
     };
 
 };

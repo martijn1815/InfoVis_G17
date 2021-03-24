@@ -1,9 +1,9 @@
 
-console.log("TEST: Stackedchart called");
+
 
 
 function createStackedchart() {
-
+    console.log("TEST: Stackedchart called");
 
     // set the dimensions and margins of the graph
     var margin = {top: 60, right: 230, bottom: 50, left: 70},
@@ -20,9 +20,9 @@ function createStackedchart() {
               "translate(" + margin.left + "," + margin.top + ")");
 
     // Parse the Data
-    d3.csv("static/data/data_stack_v3.csv", function(error, data) {
+    d3.csv("static/data/data_stack_v3.csv", function(data) {
     //d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered_wide.csv", function(data) {
-      if (error) throw error;
+
 
       //////////
       // GENERAL //
