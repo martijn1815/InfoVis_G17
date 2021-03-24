@@ -19,31 +19,39 @@ function getID(d, x) {
     return ID;
 };
 
-function createNLMap() {
+function createNLMap(yearid) {
     // Setting the margin, height and width variables
     // Adding a svg
-    var svg = d3.select("#map_netherlands")
+    var YearID2 = yearid
+
+    var box = d3.select("#map_netherlands")
+        .append("div")
+        .attr("id", "map_box")
+
+    var svg = d3.select("#map_box")
         .append("svg")
+        .attr("id", "#mapsvg")
         .attr("height", height + margin.top + margin.bottom)
         .attr("width", width + margin.left + margin.right)
         .append("g")
+        .attr("id", '#nlmap')
         .attr("transform", "translate(" + margin.left + "," + margin.top  + ")");
 
-    var div = d3.select("body").append("div")
+    var div = d3.select("main").append("div")
             .attr("class", "tooltip")
+            .attr("id", "tooltip")
             .style("opacity", 0);
 
     d3.queue()
         .defer(d3.json, "https://cartomap.github.io/nl/wgs84/provincie_2021.geojson")
-        .defer(d3.csv, "static/data/netherlands_map.csv")
         .defer(d3.json, "static/data/data.json")
         .await(ready);
 
-    function ready(error, topo, data, data2) {
-
-        var YearID = 27;
-        var DataYear = data2.children[YearID].children;
-        console.log(data2.children[YearID].children);
+    function ready(error, topo, data) {
+        console.log(data)
+        console.log(YearID2)
+        var DataYear = data.children[yearid].children;
+        console.log(data.children[yearid].children);
 
         for (var i = 0; i<DataYear.length; i++) {
 
@@ -64,7 +72,7 @@ function createNLMap() {
 
                     topo.features[j].properties.PartyName = Max.name;
                     topo.features[j].properties.PartyVotes= Max.votes;
-
+                    console.log(topo.features[j].properties)
                     break;
                 }
             }
@@ -114,84 +122,28 @@ function createNLMap() {
             .style("stroke", "black")
             .style("stroke-width", "0.25")
             .on("mouseover", function(d) {
-                    div.transition()
-                        .duration(200)
-                        .style("opacity", .9);
-                        div.html(function() {
-                        if (d.properties.Temperature)
-                        return "<strong>" + d.properties.statnaam + "<strong>"
-                        })
-                        .style("left", (d3.event.pageX + 15) + "px")
-                        .style("top", (d3.event.pageY - 50) + "px");
-                })
-                .on("mouseout", function(d) {
-                    div.transition()
-                        .duration(500)
-                        .style("opacity", 0);
-                });
+                div.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                    div.html(function() {
+
+                    return "<strong>" + d.properties.statnaam + "</strong>" + '<br><br>Biggest party: ' + d.properties.PartyName
+                   })
+                    .style("left", (d3.event.pageX + 50) + "px")
+                    .style("top", (d3.event.pageY - 50) + "px");
+            })
+            .on("mouseout", function(d) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
 
 
         d3.selectAll("#yearRange").on("change", function change() {
             var YearID = this.value;
-            var DataYear = data2.children[YearID].children;
-            console.log(YearID)
-            for (var i = 0; i<DataYear.length; i++) {
-
-                var ProvinceData = DataYear[i].name;
-                if (ProvinceData == "'s-Hertogenbosch") {
-                    ProvinceData = "Noord-Brabant"
-                }
-                if (ProvinceData == "FryslÃ¢n") {
-                    ProvinceData = "Fryslân"
-                }
-                //console.log(DataYear[i].children)
-                var Max = getMax(DataYear[i].children, "votes");
-
-                for (var j = 0; j<topo.features.length; j++) {
-                    var Province_topo = topo.features[j].properties.statnaam;
-
-                    if (ProvinceData == Province_topo) {
-
-                        topo.features[j].properties.PartyName = Max.name;
-                        topo.features[j].properties.PartyVotes= Max.votes;
-
-                        break;
-                    }
-                }
-            };
-
-             svg.append("g")
-                .selectAll("path")
-                .data(topo.features)
-                .enter()
-                .append("path")
-                // draw each country
-                .attr("d", d3.geoPath()
-                    .projection(projection)
-                )
-                .attr("fill", function (d) {
-                    var Stream = d.properties.PartyName
-                    return color(Stream);
-                    })
-                .style("stroke", "black")
-                .style("stroke-width", "0.25")
-                .on("mouseover", function(d) {
-                    div.transition()
-                        .duration(200)
-                        .style("opacity", .9);
-                        div.html(function() {
-                        if (d.properties.Temperature)
-                        return "<strong>" + d.properties.statnaam + "<strong>"
-                        })
-                        .style("left", (d3.event.pageX + 15) + "px")
-                        .style("top", (d3.event.pageY - 50) + "px");
-                })
-                .on("mouseout", function(d) {
-                    div.transition()
-                        .duration(500)
-                        .style("opacity", 0);
-                });
-
+            d3.selectAll("#map_box").remove()
+            d3.selectAll("#tooltip").remove()
+            createNLMap(YearID)
         });
     };
 
