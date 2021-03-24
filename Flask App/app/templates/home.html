@@ -56,23 +56,19 @@
 	//console.log("Data loaded:");
 	//console.log(data);
 
-	var container_id = "#treemap";
-	const margin = {top: 40, right: 10, bottom: 10, left: 10},
-          width = 960 - margin.left - margin.right,
-          height = 500 - margin.top - margin.bottom;
-
     //createNLMap();
     //createStackedchart();
 
     d3.json("static/data/data.json", function(error, data) {
-         if (error) throw error;
+        if (error) throw error;
 
-         node = createTreemap(data);
+        node = createTreemap(data);
 
-         d3.selectAll("#yearRange").on("change", function change() {
-             var YearID = this.value;
-             updateTreemap(data, node, YearID);
-         });
+        //Put slider update functions here:
+        d3.selectAll("#yearRange").on("change", function change() {
+            var YearID = this.value;
+            updateTreemap(data, node, YearID);
+        });
      });
 </script>
 

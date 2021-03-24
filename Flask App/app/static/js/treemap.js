@@ -37,10 +37,14 @@ function updateTreemap(data, node, YearID) {
 function createTreemap(data) {
     console.log("TEST: treemap called");
 
+    const margin = {top: 40, right: 10, bottom: 10, left: 10},
+          width = 960 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
+
     const color = d3.scaleOrdinal().range(d3.schemeCategory20c);
     treemap.size([width, height]);
 
-    const div = d3.select(container_id)
+    const div = d3.select("#treemap")
                   .style("position", "relative")
                   .style("width", (width + margin.left + margin.right) + "px")
                   .style("height", (height + margin.top + margin.bottom) + "px")
