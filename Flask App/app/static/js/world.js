@@ -1,5 +1,3 @@
-console.log('testtest')
-
 function getMax(arr, prop) {
     var max;
     for (var i=0 ; i<arr.length ; i++) {
@@ -52,10 +50,10 @@ function createNLMap(yearid) {
         .await(ready);
 
     function ready(error, topo, data) {
-        console.log(data)
-        console.log(YearID2)
+
+
         var DataYear = data.children[yearid].children;
-        console.log(data.children[yearid].children);
+
 
         for (var i = 0; i<DataYear.length; i++) {
 
@@ -143,14 +141,7 @@ function createNLMap(yearid) {
             });
 
 
-        d3.selectAll("#yearRange").on("change", function change() {
-            console.log("Update - Map: year");
 
-            var YearID = this.value;
-            d3.selectAll("#map_box").remove()
-            d3.selectAll("#tooltip").remove()
-            createNLMap(YearID)
-        });
     };
 
 };
