@@ -132,6 +132,8 @@ function createNLMap() {
 
 
         d3.selectAll("#yearRange").on("change", function change() {
+            console.log("Update: map year");
+
             var YearID = this.value;
             var DataYear = data2.children[YearID].children;
             console.log(YearID)

@@ -47,6 +47,7 @@ function createTreemap() {
                         .text((d) => d.data.name);
 
         d3.selectAll("#yearRange").on("change", function change() {
+            console.log("Update: treemap year");
             var YearID = this.value;
             //console.log(year);
 
