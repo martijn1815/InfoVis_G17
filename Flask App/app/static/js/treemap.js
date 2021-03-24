@@ -8,6 +8,7 @@ function getID(d, x) {
     return ID
 }
 
+
 function createTreemap() {
     console.log("TEST: treemap called");
 
@@ -47,7 +48,7 @@ function createTreemap() {
                         .text((d) => d.data.name);
 
         d3.selectAll("#yearRange").on("change", function change() {
-            console.log("Update: treemap year");
+            console.log("Update - Treemap: year");
             var YearID = this.value;
             //console.log(year);
 
