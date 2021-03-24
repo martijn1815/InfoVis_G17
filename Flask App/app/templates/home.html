@@ -32,7 +32,9 @@
 
 <div id="map_netherlands"></div>
 
-<div id="Stacked_zoom_chart"></div>
+
+<H2 class="col-sm-12"> Political streams over the years </H2>
+<div id="stacked_bar_chart"></div>
 
 <!-- End page content -->
 
@@ -60,19 +62,10 @@
           width = 960 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
 
-    d3.json("static/data/data.json", function(error, data) {
-        if (error) throw error;
 
-        node = createTreemap(data);
-        console.log(treemap);
-        //createNLMap();
-        //createStackedchart();
-
-        d3.selectAll("#yearRange").on("change", function change() {
-            var YearID = this.value;
-            updateTreemap(data, node, YearID);
-        });
-    });
+    createTreemap();
+    //createNLMap();
+    //createStackedchart();
 </script>
 
 {% endblock %}
