@@ -40,7 +40,7 @@ function createTreemap(data) {
     const color = d3.scaleOrdinal().range(d3.schemeCategory20c);
     treemap.size([width, height]);
 
-    const div = d3.select(container_id)
+    const div = d3.select("#treemap")
                   .style("position", "relative")
                   .style("width", (width + margin.left + margin.right) + "px")
                   .style("height", (height + margin.top + margin.bottom) + "px")
