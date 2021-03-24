@@ -1,3 +1,5 @@
+const treemap = d3.treemap();
+
 function getID(d, x) {
     var ID = 0;
     for (var i = 0; i < Object.values(d).length; i++) {
@@ -8,61 +10,66 @@ function getID(d, x) {
     return ID
 }
 
-function createTreemap() {
+
+function updateTreemap(data, node, YearID) {
+    console.log("Update - Treemap: year");
+    //console.log(data);
+
+    //var YearID = this.value;
+    //console.log(YearID);
+
+    //YearID = getID(data.children, year);
+     TotalID = getID(data.children[YearID].children, "Totaal");
+
+     const newRoot = d3.hierarchy(data.children[YearID].children[TotalID], (d) => d.children)
+                       .sum((d) => d.votes);
+
+     node.data(treemap(newRoot).leaves())
+         .transition()
+         .duration(1500)
+         .style("left", (d) => d.x0 + "px")
+         .style("top", (d) => d.y0 + "px")
+         .style("width", (d) => Math.max(0, d.x1 - d.x0 - 1) + "px")
+         .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px")
+}
+
+
+function createTreemap(data) {
     console.log("TEST: treemap called");
 
-    const color = d3.scaleOrdinal().range(d3.schemeCategory20c);
-    const treemap = d3.treemap().size([width, height]);
+    const margin = {top: 40, right: 10, bottom: 10, left: 10},
+          width = 960 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
 
-    const div = d3.select(container_id)
+    const color = d3.scaleOrdinal().range(d3.schemeCategory20c);
+    treemap.size([width, height]);
+
+    const div = d3.select("#treemap")
                   .style("position", "relative")
                   .style("width", (width + margin.left + margin.right) + "px")
                   .style("height", (height + margin.top + margin.bottom) + "px")
                   .style("left", margin.left + "px")
                   .style("top", margin.top + "px");
 
-    d3.json("static/data/data.json", function(error, data) {
-        if (error) throw error;
+    //var YearID = getID(data.children, 2017);
+    var YearID = 27;
+    var TotalID = getID(data.children[YearID].children, "Totaal");
 
-        console.log(data);
+    const root = d3.hierarchy(data.children[YearID].children[TotalID], (d) => d.children)
+                   .sum((d) => d.votes);
 
-        //var YearID = getID(data.children, 2017);
-        var YearID = 27;
-        var TotalID = getID(data.children[YearID].children, "Totaal");
+    const tree = treemap(root);
 
-        const root = d3.hierarchy(data.children[YearID].children[TotalID], (d) => d.children)
-                       .sum((d) => d.votes);
+    const node = div.datum(root).selectAll(".node")
+                    .data(tree.leaves())
+                    .enter().append("div")
+                    .attr("class", "node")
+                    .style("left", (d) => d.x0 + "px")
+                    .style("top", (d) => d.y0 + "px")
+                    .style("width", (d) => Math.max(0, d.x1 - d.x0 - 1) + "px")
+                    .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px")
+                    .style("background", (d) => color(d.data.name))
+                    .text((d) => d.data.name);
 
-        const tree = treemap(root);
-
-        const node = div.datum(root).selectAll(".node")
-                        .data(tree.leaves())
-                        .enter().append("div")
-                        .attr("class", "node")
-                        .style("left", (d) => d.x0 + "px")
-                        .style("top", (d) => d.y0 + "px")
-                        .style("width", (d) => Math.max(0, d.x1 - d.x0 - 1) + "px")
-                        .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px")
-                        .style("background", (d) => color(d.data.name))
-                        .text((d) => d.data.name);
-
-        d3.selectAll("#yearRange").on("change", function change() {
-            var YearID = this.value;
-            //console.log(year);
-
-            //YearID = getID(data.children, year);
-            TotalID = getID(data.children[YearID].children, "Totaal");
-
-            const newRoot = d3.hierarchy(data.children[YearID].children[TotalID], (d) => d.children)
-                              .sum((d) => d.votes);
-
-            node.data(treemap(newRoot).leaves())
-                .transition()
-                .duration(1500)
-                .style("left", (d) => d.x0 + "px")
-                .style("top", (d) => d.y0 + "px")
-                .style("width", (d) => Math.max(0, d.x1 - d.x0 - 1) + "px")
-                .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px")
-        });
-    });
+    return node;
 };
