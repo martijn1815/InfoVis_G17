@@ -66,7 +66,7 @@ def main(argv):
 
             json_text = json_text[:-1] + '\n]\n},'
 
-        json_text += json_text[:-1] + '\n]\n}'
+        json_text = json_text[:-1] + '\n]\n}'
 
     json_text += '\n]\n}\n]\n}'
 
