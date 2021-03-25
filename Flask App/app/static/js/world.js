@@ -33,8 +33,8 @@ function createNLMap(yearid) {
                 .append("div")
                 .attr("id", "map_box")
 
-    const margin_map = {top: 10, right: 0, bottom: 10, left: 5},
-          width_map = 960 - margin_map.left - margin_map.right,
+    const margin_map = {top: 10, right: 0, bottom: 10, left: 80},
+          width_map = 480 - margin_map.left - margin_map.right,
           height_map = 500 - margin_map.top - margin_map.bottom;
 
     var svg = d3.select("#map_box")
