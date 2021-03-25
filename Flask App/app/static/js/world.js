@@ -1,3 +1,5 @@
+
+
 function getMax(arr, prop) {
     var max;
     for (var i=0 ; i<arr.length ; i++) {
@@ -17,6 +19,13 @@ function getID(d, x) {
     return ID;
 };
 
+function updateNLMap(yearid) {
+    var YearID = yearid
+    d3.selectAll("#map_box").remove();
+    d3.selectAll("#tooltip").remove();
+    createNLMap(YearID)
+};
+
 function createNLMap(yearid) {
     // Setting the margin, height and width variables
     // Adding a svg
@@ -26,7 +35,7 @@ function createNLMap(yearid) {
         .append("div")
         .attr("id", "map_box")
 
-    const margin = {top: 40, right: 10, bottom: 10, left: 10},
+    var margin = {top: 40, right: 10, bottom: 10, left: 10},
           width = 960 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
 
@@ -74,7 +83,7 @@ function createNLMap(yearid) {
 
                     topo.features[j].properties.PartyName = Max.name;
                     topo.features[j].properties.PartyVotes= Max.votes;
-                    console.log(topo.features[j].properties)
+
                     break;
                 }
             }
@@ -105,7 +114,7 @@ function createNLMap(yearid) {
           .scale(scale).translate(offset);
         path = path.projection(projection);
 
-        var color = d3.scaleOrdinal().range(d3.schemeCategory20c);
+        const color = d3.scaleOrdinal().range(d3.schemeCategory20c);
 
         svg.append("g")
             .selectAll("path")
@@ -118,7 +127,7 @@ function createNLMap(yearid) {
             )
             .attr("fill", function (d) {
                 var Stream = d.properties.PartyName
-                console.log(Stream)
+
                 return color(Stream);
                 })
             .style("stroke", "black")
@@ -139,8 +148,6 @@ function createNLMap(yearid) {
                     .duration(500)
                     .style("opacity", 0);
             });
-
-
 
     };
 

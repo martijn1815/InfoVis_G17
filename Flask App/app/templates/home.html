@@ -64,13 +64,14 @@
 
         node = createTreemap(data);
 
+
         //Put slider update functions here:
         d3.selectAll("#yearRange").on("change", function change() {
             var YearID = this.value;
+            updateNLMap(YearID)
             updateTreemap(data, node, YearID);
-            d3.selectAll("#map_box").remove()
-            d3.selectAll("#tooltip").remove()
-            createNLMap(YearID)
+
+
         });
      });
 </script>
