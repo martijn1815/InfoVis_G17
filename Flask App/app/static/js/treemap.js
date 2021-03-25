@@ -37,7 +37,7 @@ function updateTreemap(data, node, YearID) {
 function createTreemap(data) {
     console.log("TEST: treemap called");
 
-    const margin_tm = {top: 10, right: 5, bottom: 10, left: 0},
+    const margin_tm = {top: 10, right: 0, bottom: 10, left: 5},
           width_tm = 480 - margin_tm.left - margin_tm.right,
           height_tm = 500 - margin_tm.top - margin_tm.bottom;
 
