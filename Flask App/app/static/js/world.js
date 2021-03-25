@@ -17,11 +17,19 @@ function getID(d, x) {
     return ID;
 };
 
+function  updateNLMap(YearID) {
+    d3.selectAll("#map_box").remove();
+    d3.selectAll("#tooltip").remove();
+    createNLMap(yearid = YearID);
+
+};
+
+
 function createNLMap(yearid) {
     // Setting the margin_map, height_map and width_map variables
     // Adding a svg
     var YearID2 = yearid
-
+    console.log(yearid)
     var box = d3.select("#map_netherlands")
         .append("div")
         .attr("id", "map_box")
@@ -71,7 +79,7 @@ function createNLMap(yearid) {
 
                     topo.features[j].properties.PartyName = Max.name;
                     topo.features[j].properties.PartyVotes= Max.votes;
-                    console.log(topo.features[j].properties)
+
                     break;
                 }
             }
@@ -115,11 +123,10 @@ function createNLMap(yearid) {
             )
             .attr("fill", function (d) {
                 var Stream = d.properties.PartyName
-                console.log(Stream)
                 return color(Stream);
                 })
             .style("stroke", "black")
-            .style("stroke-width_map", "0.25")
+            .style("stroke-width_map", "0.002")
             .on("mouseover", function(d) {
                 div.transition()
                     .duration(200)
