@@ -1,5 +1,3 @@
-
-
 function getMax(arr, prop) {
     var max;
     for (var i=0 ; i<arr.length ; i++) {
@@ -83,7 +81,7 @@ function createNLMap(yearid) {
 
                     topo.features[j].properties.PartyName = Max.name;
                     topo.features[j].properties.PartyVotes= Max.votes;
-
+                    console.log(topo.features[j].properties)
                     break;
                 }
             }
@@ -114,7 +112,7 @@ function createNLMap(yearid) {
           .scale(scale).translate(offset);
         path = path.projection(projection);
 
-        const color = d3.scaleOrdinal().range(d3.schemeCategory20c);
+        var color = d3.scaleOrdinal().range(d3.schemeSet1);
 
         svg.append("g")
             .selectAll("path")
@@ -127,7 +125,7 @@ function createNLMap(yearid) {
             )
             .attr("fill", function (d) {
                 var Stream = d.properties.PartyName
-
+                console.log(Stream)
                 return color(Stream);
                 })
             .style("stroke", "black")

@@ -11,6 +11,7 @@
 <link href="../static/css/treemap.css" rel="stylesheet" type="text/css">
 <!-- Load JavaScript Files -->
 <script src="//d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script type="text/javascript" src="../static/js/tooltip.js"></script>
 <script type="text/javascript" src="../static/js/treemap.js"></script>
 <script type="text/javascript" src="../static/js/world.js"></script>
@@ -32,7 +33,6 @@
 
 <div id="map_netherlands"></div>
 
-<H2 class="col-sm-12"> Political streams over the years </H2>
 <div id="stacked_bar_chart"></div>
 
 <!-- End page content -->
@@ -57,13 +57,13 @@
 	//console.log(data);
 
     createNLMap(yearid = 27);
-    //createStackedchart();
+    createStackedchart();
 
     d3.json("static/data/data.json", function(error, data) {
         if (error) throw error;
+        console.log(data);
 
         node = createTreemap(data);
-
 
         //Put slider update functions here:
         d3.selectAll("#yearRange").on("change", function change() {
@@ -71,7 +71,7 @@
             updateNLMap(YearID)
             updateTreemap(data, node, YearID);
 
-
+            createNLMap(YearID)
         });
      });
 </script>
