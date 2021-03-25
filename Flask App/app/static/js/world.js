@@ -18,7 +18,7 @@ function getID(d, x) {
 };
 
 function createNLMap(yearid) {
-    // Setting the margin_map, height_map and width_map variables
+    // Setting the margin, height and width variables
     // Adding a svg
     var YearID2 = yearid
 
@@ -26,18 +26,18 @@ function createNLMap(yearid) {
         .append("div")
         .attr("id", "map_box")
 
-    const margin_map = {top: 10, right: 0, bottom: 10, left: 0},
-          width_map = 480 - margin_map.left - margin_map.right,
-          height_map = 500 - margin_map.top - margin_map.bottom;
+    const margin = {top: 40, right: 10, bottom: 10, left: 10},
+          width = 960 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
 
     var svg = d3.select("#map_box")
         .append("svg")
         .attr("id", "#mapsvg")
-        .attr("height", height_map + margin_map.top + margin_map.bottom)
-        .attr("width", width_map + margin_map.left + margin_map.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("width", width + margin.left + margin.right)
         .append("g")
         .attr("id", '#nlmap')
-        .attr("transform", "translate(" + margin_map.left + "," + margin_map.top  + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top  + ")");
 
     var div = d3.select("main").append("div")
             .attr("class", "tooltip")
@@ -84,7 +84,7 @@ function createNLMap(yearid) {
 
         var center = d3.geoCentroid(topo);
         var scale  = 150;
-        var offset = [width_map/2, height_map/2];
+        var offset = [width/2, height/2];
         var projection = d3.geoMercator().scale(scale).center(center)
             .translate(offset);
 
@@ -94,11 +94,11 @@ function createNLMap(yearid) {
         // using the path determine the bounds of the current map and use
         // these to determine better values for the scale and translation
         var bounds  = path.bounds(topo);
-        var hscale  = scale*width_map  / (bounds[1][0] - bounds[0][0]);
-        var vscale  = scale*height_map / (bounds[1][1] - bounds[0][1]);
+        var hscale  = scale*width  / (bounds[1][0] - bounds[0][0]);
+        var vscale  = scale*height / (bounds[1][1] - bounds[0][1]);
         var scale   = (hscale < vscale) ? hscale : vscale;
-        var offset  = [width_map - (bounds[0][0] + bounds[1][0])/2,
-                          height_map - (bounds[0][1] + bounds[1][1])/2];
+        var offset  = [width - (bounds[0][0] + bounds[1][0])/2,
+                          height - (bounds[0][1] + bounds[1][1])/2];
 
         // new projection
         projection = d3.geoMercator().center(center)
@@ -122,7 +122,7 @@ function createNLMap(yearid) {
                 return color(Stream);
                 })
             .style("stroke", "black")
-            .style("stroke-width_map", "0.25")
+            .style("stroke-width", "0.25")
             .on("mouseover", function(d) {
                 div.transition()
                     .duration(200)
