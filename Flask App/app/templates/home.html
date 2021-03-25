@@ -67,9 +67,8 @@
         //Put slider update functions here:
         d3.selectAll("#yearRange").on("change", function change() {
             var YearID = this.value;
-            updateNLMap(YearID)
+            updateNLMap(YearID);
             updateTreemap(data, node, YearID);
-
         });
      });
 </script>
