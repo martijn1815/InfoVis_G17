@@ -48,23 +48,28 @@ def main(argv):
                      '"name": "{0}",\n'.format(index[1])
 
         for column in info_columns:
+            if column == "GeldigeStemmen":
+                json_text += '"votes": {1},\n'.format(column, row[column])
             json_text += '"{0}": {1},\n'.format(column, row[column])
 
-        json_text += '"children": [\n'
+        json_text += '"children": ['
 
         #for column in party_columns:
         #    #if row[column] != 0:  # Can set a threshold here
         #        json_text += '\n{{"name": "{0}", "votes": {1}}},'.format(column, row[column])
 
         for key in parties:
-            json_text += '{{\n' \
+            votes_count = 0
+            json_text += '\n{{\n' \
                          '"name": "{0}",\n' \
                          '"children": ['.format(key)
 
             for party in parties[key]:
-                json_text += '\n{{"name": "{0}", "votes": {1}}},'.format(party, row[party])
+                json_text += '\n{{"name": "{0}", "votes": {1}, "votes2": {1}}},'.format(party, row[party])
+                votes_count += row[party]
 
-            json_text = json_text[:-1] + '\n]\n},'
+            json_text = json_text[:-1] + '\n],\n'
+            json_text += '"votes": {0}\n}},'.format(votes_count)
 
         json_text = json_text[:-1] + '\n]\n}'
 

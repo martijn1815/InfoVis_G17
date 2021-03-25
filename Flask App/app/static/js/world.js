@@ -37,6 +37,8 @@ function createNLMap(yearid) {
           width_map = 480 - margin_map.left - margin_map.right,
           height_map = 500 - margin_map.top - margin_map.bottom;
 
+    var color = d3.scaleOrdinal().range(d3.schemeSet1);
+
     var svg = d3.select("#map_box")
                 .append("svg")
                 .attr("id", "#mapsvg")
@@ -102,8 +104,6 @@ function createNLMap(yearid) {
         projection = d3.geoMercator().center(center)
                        .scale(scale).translate(offset);
         path = path.projection(projection);
-
-        var color = d3.scaleOrdinal().range(d3.schemeSet1);
 
         svg.append("g")
            .selectAll("path")
