@@ -26,7 +26,7 @@
 
 <div class="row col-lg-12 slider_container">
     <div class="col-lg-1">
-        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="playButton()"><i id="playbutton" class="fas fa-play"></i></button>
+        <button type="button" id="button_play" class="btn btn-outline-secondary btn-sm" onclick="buttonPlayPress()"><i class="fas fa-play"></i></button>
     </div>
     <div class="col-lg-11">
         <input id="yearRange" class="slider" type="range" min="0" max="27" step="1" value="27" data-show-value="true">
@@ -54,14 +54,36 @@
     output.innerHTML = yearArray[slider.value]; // Display the default slider value
 
     // Update the current slider value (each time you drag the slider handle)
-    slider.oninput = function() {
+    slider.onchange = function() {
       output.innerHTML = yearArray[this.value];
     }
 
-    function playButton() {
-        console.log("Test Play Button");
-        document.getElementById("playbutton")
+    // Play button //
+    var state = 'pause';
+    var myTimer;
+    function buttonPlayPress() {
+        if(state=='play'){
+            state = 'pause';
+            d3.select("#button_play i").attr('class', "fa fa-play");
+
+            clearInterval (myTimer);
+        }
+        else if(state=='pause'){
+            state = 'play';
+            d3.select("#button_play i").attr('class', "fa fa-pause");
+
+            clearInterval (myTimer);
+            myTimer = setInterval (function() {
+                var b = d3.select("#yearRange");
+                var t = (+b.property("value") + 1) % (+b.property("max") + 1);
+                if (t == 0) { t = +b.property("min"); }
+                b.property("value", t).dispatch('change');
+                output.innerHTML = yearArray[t];
+            }, 2000);
+        }
+        console.log("button play pressed, was "+state);
     }
+    ////////////////
 
 
 	//const data = FileAttachment("static/test_set.json").json()
@@ -78,7 +100,7 @@
         node = createTreemap(data);
 
         //Put slider update functions here:
-        d3.selectAll("#yearRange").on("change", function change() {
+        d3.select("#yearRange").on("change", function change() {
             var YearID = this.value;
             updateNLMap(YearID);
             updateTreemap(data, node, YearID);

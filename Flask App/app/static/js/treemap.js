@@ -26,7 +26,7 @@ function updateTreemap(data, node, YearID) {
 
      node.data(treemap(newRoot).leaves())
          .transition()
-         .duration(1500)
+         .duration(1000)
          .style("left", (d) => d.x0 + "px")
          .style("top", (d) => d.y0 + "px")
          .style("width", (d) => Math.max(0, d.x1 - d.x0 - 1) + "px")
