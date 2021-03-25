@@ -37,19 +37,19 @@ function updateTreemap(data, node, YearID) {
 function createTreemap(data) {
     console.log("TEST: treemap called");
 
-    const margin = {top: 40, right: 10, bottom: 10, left: 10},
-          width = 960 - margin.left - margin.right,
-          height = 500 - margin.top - margin.bottom;
+    const margin_tm = {top: 10, right: 5, bottom: 10, left: 0},
+          width_tm = 480 - margin_tm.left - margin_tm.right,
+          height_tm = 500 - margin_tm.top - margin_tm.bottom;
 
     const color = d3.scaleOrdinal().range(d3.schemeSet1);
-    treemap.size([width, height]);
+    treemap.size([width_tm, height_tm]);
 
     const div = d3.select("#treemap")
                   .style("position", "relative")
-                  .style("width", (width + margin.left + margin.right) + "px")
-                  .style("height", (height + margin.top + margin.bottom) + "px")
-                  .style("left", margin.left + "px")
-                  .style("top", margin.top + "px");
+                  .style("width", (width_tm + margin_tm.left + margin_tm.right) + "px")
+                  .style("height", (height_tm + margin_tm.top + margin_tm.bottom) + "px")
+                  .style("left", margin_tm.left + "px")
+                  .style("top", margin_tm.top + "px");
 
     //var YearID = getID(data.children, 2017);
     var YearID = 27;

@@ -2,9 +2,9 @@ function createStackedchart() {
     console.log("TEST: Stackedchart called");
 
     // set the dimensions and margins of the graph
-    var margin = {top: 60, right: 10, bottom: 10, left: 10},
+    var margin = {top: 60, right: 0, bottom: 60, left: 70},
         width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        height = 300 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
     var svg = d3.select("#stacked_bar_chart")
@@ -162,7 +162,7 @@ function createStackedchart() {
            .data(keys)
            .enter()
            .append("rect")
-           .attr("x", 400)
+           .attr("x", 50)
            .attr("y", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
            .attr("width", size)
            .attr("height", size)
@@ -175,7 +175,7 @@ function createStackedchart() {
            .data(keys)
            .enter()
            .append("text")
-           .attr("x", 400 + size*1.2)
+           .attr("x", 50 + size*1.2)
            .attr("y", function(d,i){ return 10 + i*(size+5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
            .style("fill", function(d){ return color(d)})
            .text(function(d){ return d})
