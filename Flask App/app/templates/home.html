@@ -61,6 +61,7 @@
 
     d3.json("static/data/data.json", function(error, data) {
         if (error) throw error;
+        console.log(data);
 
         node = createTreemap(data);
 

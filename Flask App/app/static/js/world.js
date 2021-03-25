@@ -105,7 +105,7 @@ function createNLMap(yearid) {
           .scale(scale).translate(offset);
         path = path.projection(projection);
 
-        var color = d3.scaleOrdinal().range(d3.schemeCategory20c);
+        var color = d3.scaleOrdinal().range(d3.schemeSet1);
 
         svg.append("g")
             .selectAll("path")
