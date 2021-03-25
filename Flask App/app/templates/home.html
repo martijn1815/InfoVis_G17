@@ -5,6 +5,8 @@
 	d3.selectAll(".nav-item").classed("active", false);
 	d3.select("#nav-link-home").classed("active", true);
 </script>
+<!-- Load Icons -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!-- Load CSS Files -->
 <link href="../static/css/tooltip.css" rel="stylesheet" type="text/css">
 <link href="../static/css/slider.css" rel="stylesheet" type="text/css">
@@ -22,8 +24,13 @@
 
 <div id="stacked_bar_chart"></div>
 
-<div class="col-lg-12 slider_container">
-    <input id="yearRange" class="slider" type="range" min="0" max="27" step="1" value="27" data-show-value="true">
+<div class="row col-lg-12 slider_container">
+    <div class="col-lg-1">
+        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="playButton()"><i id="playbutton" class="fas fa-play"></i></button>
+    </div>
+    <div class="col-lg-11">
+        <input id="yearRange" class="slider" type="range" min="0" max="27" step="1" value="27" data-show-value="true">
+    </div>
     <p id="yearValue" class="col-lg-12 text-center">2017</p>
 </div>
 
@@ -51,6 +58,12 @@
       output.innerHTML = yearArray[this.value];
     }
 
+    function playButton() {
+        console.log("Test Play Button");
+        document.getElementById("playbutton")
+    }
+
+
 	//const data = FileAttachment("static/test_set.json").json()
 	//console.log("Data loaded:");
 	//console.log(data);
@@ -67,7 +80,7 @@
         //Put slider update functions here:
         d3.selectAll("#yearRange").on("change", function change() {
             var YearID = this.value;
-            updateNLMap(YearID);
+            //updateNLMap(YearID);
             updateTreemap(data, node, YearID);
         });
      });
