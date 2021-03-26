@@ -8,6 +8,7 @@ function getMaxMov(arr, prop) {
     return max;
 };
 
+
 function getMaxPary(arr, prop) {
     var max;
     //console.log(arr)
@@ -24,6 +25,7 @@ function getMaxPary(arr, prop) {
     return max;
 };
 
+
 function getID(d, x) {
     var ID = 0;
     for (var i = 0; i < Object.values(d).length; i++) {
@@ -33,6 +35,7 @@ function getID(d, x) {
     }
     return ID;
 };
+
 
 function updateNLMap(YearID) {
     d3.selectAll("#map_box").remove();
@@ -54,7 +57,7 @@ function createNLMap(yearid) {
           width_map = 480 - margin_map.left - margin_map.right,
           height_map = 500 - margin_map.top - margin_map.bottom;
 
-    var color = d3.scaleOrdinal().range(d3.schemeSet1);
+    //var color = d3.scaleOrdinal().range(d3.schemeSet1);
 
     var svg = d3.select("#map_box")
                 .append("svg")
@@ -166,3 +169,10 @@ function createNLMap(yearid) {
             });
     };
 };
+
+
+d3.select('html').on('mousedown.log', function (d) {
+    if (this == d3.selectAll('svg')) {
+        d3.selectAll("path").style('opacity', 1);
+    }
+});

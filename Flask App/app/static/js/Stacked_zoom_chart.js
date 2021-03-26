@@ -26,9 +26,9 @@ function createStackedchart() {
         var keys = data.columns.slice(2);
 
         // color palette
-        var color = d3.scaleOrdinal()
-                      .domain(keys)
-                      .range(d3.schemeSet1);
+        //var color = d3.scaleOrdinal()
+        //              .domain(keys)
+        //              .range(d3.schemeSet1);
 
         //stack the data?
         var stackedData = d3.stack()
