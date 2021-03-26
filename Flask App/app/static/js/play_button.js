@@ -27,3 +27,9 @@ function buttonPlayPress() {
     console.log("button play pressed, was "+state);
 }
 ////////////////
+
+d3.select('#yearRange').on('mousedown.log', function() {
+    console.log('interrupt play');
+    state = 'pause';
+    clearInterval(myTimer);
+});

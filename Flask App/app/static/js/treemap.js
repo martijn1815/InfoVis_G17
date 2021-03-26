@@ -18,7 +18,7 @@ function updateTreemap(data, node, YearID) {
     //console.log(YearID);
 
     //YearID = getID(data.children, year);
-     RegionID = getID(data.children[YearID].children, "Total");
+     RegionID = getID(data.children[YearID].children, selectedRegion);
 
      const newRoot = d3.hierarchy(data.children[YearID].children[RegionID], (d) => d.children)
                        .sum((d) => d.votes2);
@@ -53,8 +53,7 @@ function createTreemap(data) {
                   .style("top", margin_tm.top + "px");
 
     //var YearID = getID(data.children, 2017);
-    var YearID = 27;
-    var RegionID = getID(data.children[YearID].children, "Total");
+    var RegionID = getID(data.children[YearID].children, selectedRegion);
 
     const root = d3.hierarchy(data.children[YearID].children[RegionID], (d) => d.children)
                    .sum((d) => d.votes2);

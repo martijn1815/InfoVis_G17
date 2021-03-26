@@ -144,7 +144,7 @@ function createNLMap(yearid) {
                 return color(Movement);
            })
            .style("stroke", "black")
-           .style("stroke-width_map", "0.002")
+           .style("stroke-width", "1")
            .on("mouseover", function(d) {
                 div.transition()
                    .duration(200)
@@ -162,17 +162,18 @@ function createNLMap(yearid) {
                     .style("opacity", 0);
            })
            .on('mousedown.log', function (d) {
-                console.log(d.properties.statnaam)
                 // Here function to change others;
+                selectedRegion = d.properties.statnaam;
                 d3.selectAll("path").style('opacity', 1);
-                d3.select(this).style('opacity', 0.5);
-            });
+                d3.select(this).style('opacity', 0.7);
+                d3.select('#yearRangeShadow').dispatch('change');
+                console.log(selectedRegion);
+           })
+           .on("dblclick", function (d) {
+                selectedRegion = "Total";
+                d3.selectAll("path").style('opacity', 1);
+                d3.select('#yearRangeShadow').dispatch('change');
+                console.log(selectedRegion);
+           });
     };
 };
-
-
-d3.select('html').on('mousedown.log', function (d) {
-    if (this == d3.selectAll('svg')) {
-        d3.selectAll("path").style('opacity', 1);
-    }
-});
