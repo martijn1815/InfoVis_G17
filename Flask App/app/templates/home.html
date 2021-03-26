@@ -68,7 +68,7 @@
     var selectedRegion = "Total";
     var YearID = 27;
 
-	const color = d3.scaleOrdinal().range(d3.schemeSet1);
+	const color = d3.scaleOrdinal().range(["cornflowerblue", "green", "red", "purple", "gray"]);
 
     createNLMap(YearID);
     createStackedchart();
