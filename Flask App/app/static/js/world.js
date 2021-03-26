@@ -170,11 +170,13 @@ function createNLMap(yearid) {
            })
            .on('mousedown.log', function (d) {
                 // Here function to change others;
-                selectedRegion = d.properties.statnaam;
-                d3.selectAll("path").style('opacity', 1);
-                d3.select(this).style('opacity', 0.7);
-                d3.select('#yearRangeShadow').dispatch('change');
-                console.log(selectedRegion);
+                if (!(d.properties.statnaam == "Flevoland" && YearID < 18)) {
+                    selectedRegion = d.properties.statnaam;
+                    d3.selectAll("path").style('opacity', 1);
+                    d3.select(this).style('opacity', 0.7);
+                    d3.select('#yearRangeShadow').dispatch('change');
+                    console.log(selectedRegion);
+                }
            })
            .on("dblclick", function (d) {
                 selectedRegion = "Total";

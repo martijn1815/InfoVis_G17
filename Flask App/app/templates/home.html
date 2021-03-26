@@ -82,6 +82,8 @@
         //Put slider update functions here:
         d3.select("#yearRange").on("change", function change() {
             YearID = this.value;
+            if (YearID < 18 && selectedRegion == "Flevoland") {selectedRegion = "Total"};
+
             updateNLMap(YearID);
             updateTreemap(data, node, YearID);
         });
