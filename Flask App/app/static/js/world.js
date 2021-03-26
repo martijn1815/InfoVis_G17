@@ -140,8 +140,6 @@ function createNLMap(yearid) {
                 var Movement = d.properties.MovName
                 return color(Movement);
            })
-
-
            .style("stroke", "black")
            .style("stroke-width_map", "0.002")
            .on("mouseover", function(d) {
@@ -150,7 +148,7 @@ function createNLMap(yearid) {
                    .style("opacity", .9);
 
                 div.html(function() {
-                        return "<strong>" + d.properties.statnaam + "</strong>" + '<br><br>Biggest political movement: ' + d.properties.MovName + '<br><br>Biggest party: ' + d.properties.PartyName;
+                        return "<strong>" + d.properties.statnaam + "</strong>" + '<br>Biggest political movement: ' + d.properties.MovName + '<br>Biggest party: ' + d.properties.PartyName;
                     })
                    .style("left", (d3.event.pageX + 50) + "px")
                    .style("top", (d3.event.pageY - 50) + "px");
@@ -161,8 +159,8 @@ function createNLMap(yearid) {
                     .style("opacity", 0);
            })
            .on('mousedown.log', function (d) {
-            console.log(d.properties.statnaam)
-            // Here function to change others;
+                console.log(d.properties.statnaam)
+                // Here function to change others;
             });
     };
 };
