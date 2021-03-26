@@ -140,8 +140,15 @@ function createNLMap(yearid) {
                         .projection(projection)
            )
            .attr("fill", function (d) {
+
+                if (d.properties.MovName) {
                 var Movement = d.properties.MovName
-                return color(Movement);
+                return color(Movement); }
+                else {
+                return "grey";
+
+                }
+
            })
            .style("stroke", "black")
            .style("stroke-width_map", "0.002")
