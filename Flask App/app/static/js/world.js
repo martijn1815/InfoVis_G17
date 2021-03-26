@@ -161,6 +161,8 @@ function createNLMap(yearid) {
            .on('mousedown.log', function (d) {
                 console.log(d.properties.statnaam)
                 // Here function to change others;
+                d3.selectAll("path").style('opacity', 1);
+                d3.select(this).style('opacity', 0.5);
             });
     };
 };
