@@ -18,6 +18,7 @@
 <script type="text/javascript" src="../static/js/treemap.js"></script>
 <script type="text/javascript" src="../static/js/world.js"></script>
 <script type="text/javascript" src="../static/js/Stacked_zoom_chart.js"></script>
+<script type="text/javascript" src="../static/js/play_button.js"></script>
 
 <!-- Begin page content -->
 <H2 style="padding-top: 20px; padding-bottom: 20px;">Voting history of the Netherlands</H2>
@@ -51,52 +52,18 @@
 
 <script type="text/javascript">
 	///////////// SCRIPT /////////////
-	var yearArray = [1918, 1922, 1925, 1929, 1933, 1937, 1946, 1948, 1952, 1956, 1959, 1963, 1967, 1971, 1972, 1977, 1981, 1982, 1986, 1989, 1994, 1998, 2002, 2003, 2006, 2010, 2012, 2017];
+	const yearArray = [1918, 1922, 1925, 1929, 1933, 1937, 1946, 1948, 1952, 1956, 1959, 1963, 1967, 1971, 1972, 1977, 1981, 1982, 1986, 1989, 1994, 1998, 2002, 2003, 2006, 2010, 2012, 2017];
 	var slider = document.getElementById("yearRange");
     var output = document.getElementById("yearValue");
     output.innerHTML = yearArray[slider.value]; // Display the default slider value
 
     // Update the current slider value (each time you drag the slider handle)
     slider.onchange = function() {
-      output.innerHTML = yearArray[this.value];
+        output.innerHTML = yearArray[this.value];
     }
 
-    // Play button //
-    function updateSlider(objectID) {
-        var b = d3.select(objectID);
-        var t = (+b.property("value") + 1) % (+b.property("max") + 1);
-        if (t == 0) { t = +b.property("min"); }
-        b.property("value", t).dispatch('change');
-        output.innerHTML = yearArray[t];
-    }
-
-    var state = 'pause';
+	var state = 'pause';
     var myTimer;
-    function buttonPlayPress() {
-        if(state=='play'){
-            state = 'pause';
-            d3.select("#button_play i").attr('class', "fa fa-play");
-
-            clearInterval (myTimer);
-        }
-        else if(state=='pause'){
-            state = 'play';
-            d3.select("#button_play i").attr('class', "fa fa-pause");
-
-            clearInterval (myTimer);
-            updateSlider("#yearRange");
-            myTimer = setInterval (function() {
-                updateSlider("#yearRange");
-            }, 2000);
-        }
-        console.log("button play pressed, was "+state);
-    }
-    ////////////////
-
-
-	//const data = FileAttachment("static/test_set.json").json()
-	//console.log("Data loaded:");
-	//console.log(data);
 
 	const color = d3.scaleOrdinal().range(d3.schemeSet1);
 

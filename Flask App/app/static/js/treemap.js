@@ -13,7 +13,6 @@ function getID(d, x) {
 
 function updateTreemap(data, node, YearID) {
     console.log("Update - Treemap: year");
-    //console.log(data);
 
     //var YearID = this.value;
     //console.log(YearID);
@@ -23,6 +22,8 @@ function updateTreemap(data, node, YearID) {
 
      const newRoot = d3.hierarchy(data.children[YearID].children[RegionID], (d) => d.children)
                        .sum((d) => d.votes2);
+
+     console.log(data.children[YearID].children[RegionID]);
 
      node.data(treemap(newRoot).leaves())
          .transition()
