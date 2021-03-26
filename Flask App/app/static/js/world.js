@@ -140,18 +140,38 @@ function createNLMap(yearid) {
                         .projection(projection)
            )
            .attr("fill", function (d) {
-
                 if (d.properties.MovName) {
-                var Movement = d.properties.MovName
-                return color(Movement); }
-                else {
-                return "grey";
-
+                    var Movement = d.properties.MovName
+                    return color(Movement);
                 }
-
+                else {
+                    return "grey";
+                }
            })
-           .style("stroke", "black")
-           .style("stroke-width", "1")
+           .style("opacity", function(d) {
+                if (d.properties.statnaam == selectedRegion) {
+                    return 0.7;
+                }
+                else {
+                    return 1;
+                }
+           })
+           .style("stroke", function(d) {
+                if (d.properties.statnaam == selectedRegion) {
+                    return "black";
+                }
+                else {
+                    return "gray";
+                }
+           })
+           .style("stroke-width", function(d) {
+                if (d.properties.statnaam == selectedRegion) {
+                    return 3;
+                }
+                else {
+                    return 1;
+                }
+           })
            .on("mouseover", function(d) {
                 div.transition()
                    .duration(200)
@@ -172,15 +192,21 @@ function createNLMap(yearid) {
                 // Here function to change others;
                 if (!(d.properties.statnaam == "Flevoland" && YearID < 18)) {
                     selectedRegion = d.properties.statnaam;
-                    d3.selectAll("path").style('opacity', 1);
-                    d3.select(this).style('opacity', 0.7);
+                    d3.selectAll("path").style('opacity', 1)
+                                        .style("stroke", "gray")
+                                        .style("stroke-width", 1);
+                    d3.select(this).style('opacity', 0.7)
+                                   .style("stroke", "black")
+                                   .style("stroke-width", 3);
                     d3.select('#yearRangeShadow').dispatch('change');
                     console.log(selectedRegion);
                 }
            })
            .on("dblclick", function (d) {
                 selectedRegion = "Total";
-                d3.selectAll("path").style('opacity', 1);
+                d3.selectAll("path").style('opacity', 1)
+                                    .style("stroke", "gray")
+                                    .style("stroke-width", 1);
                 d3.select('#yearRangeShadow').dispatch('change');
                 console.log(selectedRegion);
            });
