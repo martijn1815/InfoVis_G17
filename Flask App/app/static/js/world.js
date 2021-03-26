@@ -1,9 +1,26 @@
-function getMax(arr, prop) {
+function getMaxMov(arr, prop) {
     var max;
     for (var i=0 ; i<arr.length ; i++) {
         if (max == null || parseInt(arr[i][prop]) > parseInt(max[prop]))
             max = arr[i];
     }
+    //console.log(max)
+    return max;
+};
+
+function getMaxPary(arr, prop) {
+    var max;
+    //console.log(arr)
+    for (var i=0; i<arr.length;i++) {
+        //console.log(arr[i])
+        //console.log()
+         for (var j=0; j<arr[i].children.length;j++) {
+            if (max == null || parseInt(arr[i].children[j][prop]) > parseInt(max[prop]))
+            max = arr[i].children[j];
+
+         };
+
+    };
     return max;
 };
 
@@ -28,7 +45,7 @@ function createNLMap(yearid) {
     // Setting the margin_map, height_map and width_map variables
     // Adding a svg
     var YearID2 = yearid
-    console.log(yearid)
+
     var box = d3.select("#map_netherlands")
                 .append("div")
                 .attr("id", "map_box")
@@ -60,11 +77,14 @@ function createNLMap(yearid) {
 
     function ready(error, topo, data) {
         var DataYear = data.children[yearid].children;
-
+        //console.log(DataYear)
         for (var i = 0; i<DataYear.length; i++) {
             var ProvinceData = DataYear[i].name;
-            var Max = getMax(DataYear[i].children, "votes");
-
+            //console.log(ProvinceData)
+            var MaxMov = getMaxMov(DataYear[i].children, "votes");
+            var MaxParty = getMaxPary(DataYear[i].children, "votes");
+            //console.log(MaxMov)
+            //console.log(MaxParty)
             if (ProvinceData == "FryslÃ¢n") {
                 ProvinceData = "Fryslân"
             }
@@ -73,13 +93,15 @@ function createNLMap(yearid) {
                 var Province_topo = topo.features[j].properties.statnaam;
 
                 if (ProvinceData == Province_topo) {
-                    topo.features[j].properties.PartyName = Max.name;
-                    topo.features[j].properties.PartyVotes= Max.votes;
+                    topo.features[j].properties.MovName = MaxMov.name;
+                    topo.features[j].properties.MovVotes = MaxMov.votes;
+                    topo.features[j].properties.PartyName = MaxParty.name;
+                    topo.features[j].properties.PartyVotes= MaxParty.votes;
                     break;
                 }
             }
         };
-
+        console.log(topo)
         // Draw the map
 
         var center = d3.geoCentroid(topo);
@@ -115,18 +137,20 @@ function createNLMap(yearid) {
                         .projection(projection)
            )
            .attr("fill", function (d) {
-                var Stream = d.properties.PartyName
-                return color(Stream);
+                var Movement = d.properties.MovName
+                return color(Movement);
            })
+
+
            .style("stroke", "black")
            .style("stroke-width_map", "0.002")
            .on("mouseover", function(d) {
                 div.transition()
                    .duration(200)
-                   .style("opacity", .7);
+                   .style("opacity", .9);
 
                 div.html(function() {
-                        return "<strong>" + d.properties.statnaam + "</strong>" + '<br><br>Biggest party: ' + d.properties.PartyName;
+                        return "<strong>" + d.properties.statnaam + "</strong>" + '<br><br>Biggest political movement: ' + d.properties.MovName + '<br><br>Biggest party: ' + d.properties.PartyName;
                     })
                    .style("left", (d3.event.pageX + 50) + "px")
                    .style("top", (d3.event.pageY - 50) + "px");
@@ -135,6 +159,10 @@ function createNLMap(yearid) {
                 div.transition()
                     .duration(500)
                     .style("opacity", 0);
-           });
+           })
+           .on('mousedown.log', function (d) {
+            console.log(d.properties.statnaam)
+            // Here function to change others;
+            });
     };
 };
