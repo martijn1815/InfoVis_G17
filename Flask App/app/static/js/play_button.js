@@ -27,9 +27,3 @@ function buttonPlayPress() {
     console.log("button play pressed, was "+state);
 }
 ////////////////
-
-d3.select('html').on('mousedown.log', function (d) {
-    if (this == d3.selectAll('svg')) {
-        d3.selectAll("path").style('opacity', 1);
-    }
-});

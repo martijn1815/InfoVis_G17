@@ -59,6 +59,8 @@
 
     // Update the current slider value (each time you drag the slider handle)
     slider.onchange = function() {
+        state = 'pause';
+        clearInterval (myTimer);
         output.innerHTML = yearArray[this.value];
     }
 
