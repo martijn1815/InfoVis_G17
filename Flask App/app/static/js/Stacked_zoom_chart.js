@@ -22,6 +22,7 @@ function createStackedchart() {
         // GENERAL //
         /////////////
 
+        console.log(data);
         // List of groups = header of the csv files
         var keys = data.columns.slice(2);
 
