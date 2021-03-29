@@ -1,5 +1,11 @@
 const treemap = d3.treemap();
 
+var tooltip = d3.select("main").append("div")
+                .attr("class", "tooltip")
+                .attr("id", "tooltip")
+                .style("opacity", 0);
+
+
 function getID(d, x) {
     var ID = 0;
     for (var i = 0; i < Object.values(d).length; i++) {
@@ -25,13 +31,31 @@ function updateTreemap(data, node, YearID) {
 
      console.log(data.children[YearID].children[RegionID]);
 
-     node.data(treemap(newRoot).leaves())
-         .transition()
+     node.data(treemap(newRoot).leaves());
+
+     node.transition()
          .duration(1000)
          .style("left", (d) => d.x0 + "px")
          .style("top", (d) => d.y0 + "px")
          .style("width", (d) => Math.max(0, d.x1 - d.x0 - 1) + "px")
-         .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px")
+         .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px");
+
+     node.on("mouseover", function(d) {
+            tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9)
+            tooltip.html(function() {
+                        return "<strong>" + d.data.name + "</strong>" + '<br>Political movement: ' + d.parent.data.name + '<br>Votes: ' + d.data.votes.toLocaleString('en') ;
+                    })
+                   .style("left", (d3.event.pageX + 50) + "px")
+                   .style("top", (d3.event.pageY - 50) + "px");
+         })
+         .on("mouseout", function(d) {
+            tooltip.transition()
+                   .duration(500)
+                   .style("opacity", 0);
+         });
+     console.log("test");
 }
 
 
@@ -70,6 +94,22 @@ function createTreemap(data) {
                     .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px")
                     .style("background", (d) => color(d.parent.data.name))
                     .text((d) => d.data.name);
+
+    node.on("mouseover", function(d) {
+            tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9)
+            tooltip.html(function() {
+                        return "<strong>" + d.data.name + "</strong>" + '<br>Political movement: ' + d.parent.data.name + '<br>Votes: ' + d.data.votes.toLocaleString('en') ;
+                   })
+                   .style("left", (d3.event.pageX + 50) + "px")
+                   .style("top", (d3.event.pageY - 50) + "px");
+        })
+        .on("mouseout", function(d) {
+           tooltip.transition()
+                  .duration(500)
+                  .style("opacity", 0);
+        });
 
     return node;
 };
