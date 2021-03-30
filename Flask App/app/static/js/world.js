@@ -80,10 +80,11 @@ function createNLMap(yearid) {
 
     function ready(error, topo, data) {
         var DataYear = data.children[yearid].children;
-        console.log(DataYear)
+
         for (var i = 0; i<DataYear.length; i++) {
             var ProvinceData = DataYear[i].name;
             //console.log(ProvinceData)
+            var TotalVotes = DataYear[i].GeldigeStemmen;
             var MaxMov = getMaxMov(DataYear[i].children, "votes");
             var MaxParty = getMaxPary(DataYear[i].children, "votes");
             //console.log(MaxMov)
@@ -98,8 +99,10 @@ function createNLMap(yearid) {
                 if (ProvinceData == Province_topo) {
                     topo.features[j].properties.MovName = MaxMov.name;
                     topo.features[j].properties.MovVotes = MaxMov.votes;
+                    topo.features[j].properties.MovPercVotes = Math.round(((MaxMov.votes / TotalVotes) * 100) * 10) / 10;
                     topo.features[j].properties.PartyName = MaxParty.name;
                     topo.features[j].properties.PartyVotes= MaxParty.votes;
+                    topo.features[j].properties.PartyPercVotes = Math.round((MaxParty.votes / TotalVotes) * 100 * 10) / 10;
                     break;
                 }
             }
@@ -178,7 +181,7 @@ function createNLMap(yearid) {
                    .style("opacity", .9);
 
                 div.html(function() {
-                        return "<strong>" + d.properties.statnaam + "</strong>" + '<br>Biggest political movement: ' + d.properties.MovName + '<br>Biggest party: ' + d.properties.PartyName;
+                        return "<strong>" + d.properties.statnaam + "</strong>" + '<br><br>Biggest political movement: <br>' + d.properties.MovName + ' (' + d.properties.MovPercVotes + '% of votes)' + '<br>Biggest party: <br>' + d.properties.PartyName + ' (' + d.properties.PartyPercVotes + '% of votes)';
                     })
                    .style("left", (d3.event.pageX + 50) + "px")
                    .style("top", (d3.event.pageY - 50) + "px");
