@@ -2,7 +2,7 @@ const treemap = d3.treemap();
 
 var tooltip = d3.select("main").append("div")
                 .attr("class", "tooltip")
-                .attr("id", "tooltip")
+                .attr("id", "tooltip_treemap")
                 .style("opacity", 0);
 
 
@@ -41,12 +41,10 @@ function updateTreemap(data, node, YearID) {
          .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px");
 
      node.on("mouseover", function(d) {
-            console.log("Mouseover: Tooltip");
             tooltip.transition()
                    .duration(200)
                    .style("opacity", .9);
             tooltip.html(function() {
-                        console.log("Tooltip html test")
                         return "<strong>" + d.data.name + "</strong>" + '<br>Political movement: ' + d.parent.data.name + '<br>Votes: ' + d.data.votes.toLocaleString('en');
                     })
                    .style("left", (d3.event.pageX + 50) + "px")
@@ -57,7 +55,6 @@ function updateTreemap(data, node, YearID) {
                    .duration(500)
                    .style("opacity", 0);
          });
-     console.log("test");
 }
 
 
