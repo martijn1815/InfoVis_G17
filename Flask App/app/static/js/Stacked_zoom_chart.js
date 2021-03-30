@@ -184,10 +184,12 @@ function createStackedchart(value) {
         // LEGEND //
         ////////////
 
-         var svgLegned4 = d3.select(".legend4").append("svg")
-            .attr("width", 350)
-            .attr("height", 15)
-            .attr("right", 0)
+        d3.select(".legend4 svg").remove();
+
+        var svgLegned4 = d3.select(".legend4").append("svg")
+                           .attr("width", 350)
+                           .attr("height", 15)
+                           .attr("right", 0)
 
         var dataL = 0;
         var offset = 80;
