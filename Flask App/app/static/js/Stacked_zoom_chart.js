@@ -5,7 +5,7 @@ function createStackedchart(value) {
     console.log("TEST: Stackedchart called");
     console.log(value)
     // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 0, bottom: 20, left: 70},
+    var margin = {top: 0, right: 0, bottom: 20, left: 60},
         width = 960 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
 
