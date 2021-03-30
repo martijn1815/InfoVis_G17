@@ -55,7 +55,6 @@ function updateTreemap(data, node, YearID) {
                    .duration(500)
                    .style("opacity", 0);
          });
-     console.log("test");
 }
 
 
