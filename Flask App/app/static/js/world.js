@@ -80,7 +80,7 @@ function createNLMap(yearid) {
 
     function ready(error, topo, data) {
         var DataYear = data.children[yearid].children;
-        //console.log(DataYear)
+        console.log(DataYear)
         for (var i = 0; i<DataYear.length; i++) {
             var ProvinceData = DataYear[i].name;
             //console.log(ProvinceData)

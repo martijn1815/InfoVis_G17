@@ -34,7 +34,6 @@ function createStackedchart(value) {
         var keys = data.columns.slice(2);
 
         if (value == "percentages") {
-            console.log("heil")
             for (var i=0; i<data.length;i++) {
                 //console.log(data[i])
                 var Total_votes = parseInt(data[i][keys[0]]) + parseInt(data[i][keys[1]]) + parseInt(data[i][keys[2]]) + parseInt(data[i][keys[3]])
@@ -131,7 +130,7 @@ function createStackedchart(value) {
                   .data(stackedData)
                   .enter()
                   .append("path")
-                  .attr("class", function(d) { return "myArea " + d.key })
+                  .attr("class", function(d) { return "myArea " + d.key.replace(/\s/g, "") })
                   .style("fill", function(d) { return color(d.key); })
                   .attr("d", area);
 
@@ -173,7 +172,7 @@ function createStackedchart(value) {
             // reduce opacity of all groups
             d3.selectAll(".myArea").style("opacity", .1);
             // expect the one that is hovered
-            d3.select("."+d).style("opacity", 1);
+            d3.select("."+d.replace(/\s/g, "")).style("opacity", 1);
         }
 
         // And when it is not hovered anymore
@@ -185,32 +184,48 @@ function createStackedchart(value) {
         // LEGEND //
         ////////////
 
-        // Add one dot in the legend for each name.
-        var size = 20;
-        svg.selectAll("myrect")
-           .data(keys)
-           .enter()
-           .append("rect")
-           .attr("x", 50)
-           .attr("y", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
-           .attr("width", size)
-           .attr("height", size)
-           .style("fill", function(d){ return color(d)})
-           .on("mouseover", highlight)
+         var svgLegned4 = d3.select(".legend4").append("svg")
+            .attr("width", 500)
+            .attr("height", 15)
+            .attr("right", 0)
+
+        var dataL = 0;
+        var offset = 80;
+
+        var legend4 = svgLegned4.selectAll('.legends4')
+            .data(keys)
+            .enter().append('g')
+            .attr("class", "legends4")
+            .attr("transform", function (d, i) {
+             if (i === 0) {
+                dataL = d.length + offset
+                return "translate(0,0)"
+            } else {
+             var newdataL = dataL
+             dataL +=  d.length + offset
+             return "translate(" + (newdataL) + ",0)"
+            }
+        })
+
+        legend4.append('rect')
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", 10)
+            .attr("height", 10)
+            .style("fill", function(d){ return color(d)})
+            .on("mouseover", highlight)
            .on("mouseleave", noHighlight);
 
-        // Add one dot in the legend for each name.
-        svg.selectAll("mylabels")
-           .data(keys)
-           .enter()
-           .append("text")
-           .attr("x", 50 + size*1.2)
-           .attr("y", function(d,i){ return 10 + i*(size+5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
-           .style("fill", function(d){ return color(d)})
-           .text(function(d){ return d})
-           .attr("text-anchor", "left")
-           .style("alignment-baseline", "middle")
-           .on("mouseover", highlight)
+
+        legend4.append('text')
+            .attr("x", 20)
+            .attr("y", 10)
+        //.attr("dy", ".35em")
+       .text(function(d){ return d})
+            .attr("class", "textselected")
+            .style("text-anchor", "start")
+            .style("font-size", 15)
+            .on("mouseover", highlight)
            .on("mouseleave", noHighlight);
     });
 }
