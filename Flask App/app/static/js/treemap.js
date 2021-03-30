@@ -41,11 +41,13 @@ function updateTreemap(data, node, YearID) {
          .style("height", (d) => Math.max(0, d.y1 - d.y0  - 1) + "px");
 
      node.on("mouseover", function(d) {
+            console.log("Mouseover: Tooltip");
             tooltip.transition()
                    .duration(200)
-                   .style("opacity", .9)
+                   .style("opacity", .9);
             tooltip.html(function() {
-                        return "<strong>" + d.data.name + "</strong>" + '<br>Political movement: ' + d.parent.data.name + '<br>Votes: ' + d.data.votes.toLocaleString('en') ;
+                        console.log("Tooltip html test")
+                        return "<strong>" + d.data.name + "</strong>" + '<br>Political movement: ' + d.parent.data.name + '<br>Votes: ' + d.data.votes.toLocaleString('en');
                     })
                    .style("left", (d3.event.pageX + 50) + "px")
                    .style("top", (d3.event.pageY - 50) + "px");
@@ -98,9 +100,9 @@ function createTreemap(data) {
     node.on("mouseover", function(d) {
             tooltip.transition()
                    .duration(200)
-                   .style("opacity", .9)
+                   .style("opacity", .9);
             tooltip.html(function() {
-                        return "<strong>" + d.data.name + "</strong>" + '<br>Political movement: ' + d.parent.data.name + '<br>Votes: ' + d.data.votes.toLocaleString('en') ;
+                        return "<strong>" + d.data.name + "</strong>" + '<br>Political movement: ' + d.parent.data.name + '<br>Votes: ' + d.data.votes.toLocaleString('en');
                    })
                    .style("left", (d3.event.pageX + 50) + "px")
                    .style("top", (d3.event.pageY - 50) + "px");
