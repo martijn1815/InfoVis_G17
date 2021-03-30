@@ -67,7 +67,7 @@ function createStackedchart(value) {
                   .range([ 0, width ]);
         var xAxis = svg.append("g")
                        .attr("transform", "translate(0," + height + ")")
-                       .call(d3.axisBottom(toString(x)).ticks(7));
+                       .call(d3.axisBottom(x).ticks(7));
 
         // Add X axis label:
         svg.append("text")
