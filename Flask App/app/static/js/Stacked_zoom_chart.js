@@ -1,14 +1,20 @@
-function createStackedchart() {
-    console.log("TEST: Stackedchart called");
 
+function createStackedchart(value) {
+    d3.select("#chartbox").remove()
+
+    console.log("TEST: Stackedchart called");
+    console.log(value)
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 0, bottom: 20, left: 70},
         width = 960 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
+
+
     var svg = d3.select("#stacked_bar_chart")
                 .append("svg")
+                .attr("id", "chartbox")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
@@ -22,10 +28,25 @@ function createStackedchart() {
         // GENERAL //
         /////////////
 
-        console.log(data);
+        //console.log(data);
+
         // List of groups = header of the csv files
         var keys = data.columns.slice(2);
 
+        if (value == "percentages") {
+            console.log("heil")
+            for (var i=0; i<data.length;i++) {
+                //console.log(data[i])
+                var Total_votes = parseInt(data[i][keys[0]]) + parseInt(data[i][keys[1]]) + parseInt(data[i][keys[2]]) + parseInt(data[i][keys[3]])
+                //console.log(Total_votes)
+                for (j=0; j<keys.length;j++) {
+                    data[i][keys[j]] = (data[i][keys[j]] / Total_votes) * 100
+                    //console.log(keys[j])
+                };
+            };
+        };
+
+        console.log(data);
         // color palette
         //var color = d3.scaleOrdinal()
         //              .domain(keys)
@@ -46,7 +67,7 @@ function createStackedchart() {
                   .range([ 0, width ]);
         var xAxis = svg.append("g")
                        .attr("transform", "translate(0," + height + ")")
-                       .call(d3.axisBottom(x).ticks(5));
+                       .call(d3.axisBottom(toString(x)).ticks(7));
 
         // Add X axis label:
         svg.append("text")
@@ -64,9 +85,16 @@ function createStackedchart() {
            .attr("text-anchor", "start");
 
         // Add Y axis
+
+        if (value == "percentages") {
         var y = d3.scaleLinear()
-                  .domain([0, 14000000])
+                  .domain([0, 100])
                   .range([ height, 0 ]);
+        } else {
+        var y = d3.scaleLinear()
+              .domain([0, 11000000])
+              .range([ height, 0 ]);
+        }
         svg.append("g")
            .call(d3.axisLeft(y).ticks(5));
 
