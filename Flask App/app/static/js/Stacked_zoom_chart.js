@@ -185,7 +185,7 @@ function createStackedchart(value) {
         ////////////
 
          var svgLegned4 = d3.select(".legend4").append("svg")
-            .attr("width", 500)
+            .attr("width", 350)
             .attr("height", 15)
             .attr("right", 0)
 
@@ -200,12 +200,12 @@ function createStackedchart(value) {
              if (i === 0) {
                 dataL = d.length + offset
                 return "translate(0,0)"
-            } else {
-             var newdataL = dataL
-             dataL +=  d.length + offset
-             return "translate(" + (newdataL) + ",0)"
-            }
-        })
+             } else {
+                var newdataL = dataL
+                dataL +=  d.length + offset
+                return "translate(" + (newdataL) + ",0)"
+             }
+        });
 
         legend4.append('rect')
             .attr("x", 0)
@@ -214,18 +214,17 @@ function createStackedchart(value) {
             .attr("height", 10)
             .style("fill", function(d){ return color(d)})
             .on("mouseover", highlight)
-           .on("mouseleave", noHighlight);
-
+            .on("mouseleave", noHighlight);
 
         legend4.append('text')
             .attr("x", 20)
             .attr("y", 10)
         //.attr("dy", ".35em")
-       .text(function(d){ return d})
+            .text(function(d){ return d})
             .attr("class", "textselected")
             .style("text-anchor", "start")
             .style("font-size", 15)
             .on("mouseover", highlight)
-           .on("mouseleave", noHighlight);
+            .on("mouseleave", noHighlight);
     });
 }
