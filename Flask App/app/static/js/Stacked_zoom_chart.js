@@ -34,7 +34,6 @@ function createStackedchart(value) {
         var keys = data.columns.slice(2);
 
         if (value == "percentages") {
-            console.log("heil")
             for (var i=0; i<data.length;i++) {
                 //console.log(data[i])
                 var Total_votes = parseInt(data[i][keys[0]]) + parseInt(data[i][keys[1]]) + parseInt(data[i][keys[2]]) + parseInt(data[i][keys[3]])
