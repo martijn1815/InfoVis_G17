@@ -42,10 +42,10 @@
         <button type="button" id="button_play" class="btn btn-outline-secondary btn-sm center" onclick="buttonPlayPress()"><i class="fas fa-play"></i></button>
     </div>
     <div class="col-lg-11 no-gutters">
-        <input id="yearRange" class="slider" type="range" min="0" max="27" step="1" value="27" data-show-value="true">
+        <input id="yearRange" class="slider" type="range" min="0" max="28" step="1" value="28" data-show-value="true">
         <div id="yearRangeShadow"></div>
     </div>
-    <p id="yearValue" class="col-lg-12 no-gutters text-center">2017</p>
+    <p id="yearValue" class="col-lg-12 no-gutters text-center">2021</p>
 </div>
 
 <div class="container no-gutters">
@@ -66,7 +66,7 @@
 
 <script type="text/javascript">
 	///////////// SCRIPT /////////////
-	const yearArray = [1918, 1922, 1925, 1929, 1933, 1937, 1946, 1948, 1952, 1956, 1959, 1963, 1967, 1971, 1972, 1977, 1981, 1982, 1986, 1989, 1994, 1998, 2002, 2003, 2006, 2010, 2012, 2017];
+	const yearArray = [1918, 1922, 1925, 1929, 1933, 1937, 1946, 1948, 1952, 1956, 1959, 1963, 1967, 1971, 1972, 1977, 1981, 1982, 1986, 1989, 1994, 1998, 2002, 2003, 2006, 2010, 2012, 2017, 2021];
 	var slider = document.getElementById("yearRange");
     var output = document.getElementById("yearValue");
     output.innerHTML = yearArray[slider.value]; // Display the default slider value
@@ -79,7 +79,7 @@
 	var state = 'pause';
     var myTimer;
     var selectedRegion = "Total";
-    var YearID = 27;
+    var YearID = 28;
 
     var colorScheme = d3.schemeSet1
 	const color = d3.scaleOrdinal().range([colorScheme[1], colorScheme[2], colorScheme[0], colorScheme[3], "gray"]);
