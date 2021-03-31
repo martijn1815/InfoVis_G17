@@ -80,10 +80,11 @@ function createNLMap(yearid) {
 
     function ready(error, topo, data) {
         var DataYear = data.children[yearid].children;
-        console.log(DataYear)
+
         for (var i = 0; i<DataYear.length; i++) {
             var ProvinceData = DataYear[i].name;
             //console.log(ProvinceData)
+            var TotalVotes = DataYear[i].GeldigeStemmen;
             var MaxMov = getMaxMov(DataYear[i].children, "votes");
             var MaxParty = getMaxPary(DataYear[i].children, "votes");
             //console.log(MaxMov)
@@ -98,8 +99,10 @@ function createNLMap(yearid) {
                 if (ProvinceData == Province_topo) {
                     topo.features[j].properties.MovName = MaxMov.name;
                     topo.features[j].properties.MovVotes = MaxMov.votes;
+                    topo.features[j].properties.MovPercVotes = Math.round(((MaxMov.votes / TotalVotes) * 100) * 10) / 10;
                     topo.features[j].properties.PartyName = MaxParty.name;
                     topo.features[j].properties.PartyVotes= MaxParty.votes;
+                    topo.features[j].properties.PartyPercVotes = Math.round((MaxParty.votes / TotalVotes) * 100 * 10) / 10;
                     topo.features[j].properties.Voters = DataYear[i].Kiesgerechtigden;
                     topo.features[j].properties.Age20 = DataYear[i].Age20;
                     topo.features[j].properties.Age20_45 = DataYear[i].Age20_45;
@@ -178,8 +181,8 @@ function createNLMap(yearid) {
 
                 div.html(function() {
                         return "<strong>" + d.properties.statnaam + "</strong>" +
-                               '<br>Biggest political movement: <strong>' + d.properties.MovName + "</strong>" +
-                               '<br>Biggest party: <strong>' + d.properties.PartyName + "</strong>" +
+                               '<br>Biggest political movement: <strong>' + d.properties.MovName + " (" + + d.properties.MovPercVotes + "%)</strong>" +
+                               '<br>Biggest party: <strong>' + d.properties.PartyName + " (" + d.properties.PartyPercVotes + "%)</strong>" +
                                '<br>Age Demographic:' +
                                '<table style="width:70%">' +
                                '<tr><td>0-20</td><td style="text-align:right">' + d.properties.Age20.toLocaleString('en') + '</td></tr>' +

@@ -51,13 +51,14 @@
 <div class="container no-gutters">
     <H5 style="padding-left: 5px;">Voting timeline</H5>
     <form id="stacked_bar_form" class="text-center">
-        <input type="radio" name="stack" value="percentages" checked> Percentages &nbsp;&nbsp;
-        <input type="radio" name="stack" value="absolutes" > Absolutes
+        <input class = "radio_Mov" type="radio" name="stack" value="percentages" checked> Percentages &nbsp;&nbsp;
+        <input class = "radio_Mov" type="radio" name="stack" value="absolutes" > Absolutes
     </form>
     <div class="legend4 text-center" style="padding-top:10px;"></div>
     <div class="row no-gutters" id="stacked_bar_chart"></div>
     <p class="col-lg-12 no-gutters text-right text-muted font-italic">Double click to remove selection.</p>
 </div>
+
 
 <!-- End page content -->
 
@@ -106,7 +107,7 @@
             updateTreemap(data, node, YearID);
         });
 
-        d3.selectAll("input[name='stack']").on("change", function(){
+        d3.selectAll("input[class='radio_Mov']").on("change", function(){
             console.log(this.value)
             createStackedchart(this.value)
         });
