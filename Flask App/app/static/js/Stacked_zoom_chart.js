@@ -5,7 +5,7 @@ function createStackedchart(value) {
     console.log("TEST: Stackedchart called");
     console.log(value)
     // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 0, bottom: 20, left: 70},
+    var margin = {top: 5, right: 0, bottom: 20, left: 60},
         width = 960 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
 
@@ -188,7 +188,7 @@ function createStackedchart(value) {
 
         var svgLegned4 = d3.select(".legend4").append("svg")
                            .attr("width", 350)
-                           .attr("height", 15)
+                           .attr("height", 20)
                            .attr("right", 0)
 
         var dataL = 0;
@@ -212,15 +212,15 @@ function createStackedchart(value) {
         legend4.append('rect')
             .attr("x", 0)
             .attr("y", 0)
-            .attr("width", 10)
-            .attr("height", 10)
+            .attr("width", 20)
+            .attr("height", 20)
             .style("fill", function(d){ return color(d)})
             .on("mouseover", highlight)
             .on("mouseleave", noHighlight);
 
         legend4.append('text')
-            .attr("x", 20)
-            .attr("y", 10)
+            .attr("x", 25)
+            .attr("y", 15)
         //.attr("dy", ".35em")
             .text(function(d){ return d})
             .attr("class", "textselected")
