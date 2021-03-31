@@ -156,14 +156,7 @@ function createNLMap(yearid) {
                     return 1;
                 }
            })
-           .style("stroke", function(d) {
-                if (d.properties.statnaam == selectedRegion) {
-                    return "black";
-                }
-                else {
-                    return "black";
-                }
-           })
+           .style("stroke", "black")
            .style("stroke-width", function(d) {
                 if (d.properties.statnaam == selectedRegion) {
                     return 3;
@@ -194,17 +187,14 @@ function createNLMap(yearid) {
                     if (selectedRegion == d.properties.statnaam) {
                         selectedRegion = "Total";
                         d3.selectAll("path").style('opacity', 1)
-                                            .style("stroke", "black")
                                             .style("stroke-width", 1);
                         d3.select('#yearRangeShadow').dispatch('change');
                     }
                     else {
                         selectedRegion = d.properties.statnaam;
                         d3.selectAll("path").style('opacity', 1)
-                                            .style("stroke", "black")
                                             .style("stroke-width", 1);
                         d3.select(this).style('opacity', 0.7)
-                                       .style("stroke", "black")
                                        .style("stroke-width", 3);
                         d3.select('#yearRangeShadow').dispatch('change');
                     }
