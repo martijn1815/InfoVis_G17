@@ -12,7 +12,7 @@ from collections import defaultdict
 def main(argv):
     print("Loading Data:", end="\t")
 
-    df = pd.read_csv('Data/Merged_Verkiezingsuitslag.csv')
+    df = pd.read_csv('Data/merged_verkiezingsuitslag1.csv')
     df = df.groupby(['Year', 'OuderRegioNaam']).sum()
 
     parties = defaultdict(list)
