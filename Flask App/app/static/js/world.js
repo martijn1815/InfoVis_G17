@@ -100,6 +100,12 @@ function createNLMap(yearid) {
                     topo.features[j].properties.MovVotes = MaxMov.votes;
                     topo.features[j].properties.PartyName = MaxParty.name;
                     topo.features[j].properties.PartyVotes= MaxParty.votes;
+                    topo.features[j].properties.Voters = DataYear[i].Kiesgerechtigden;
+                    topo.features[j].properties.Age20 = DataYear[i].Age20;
+                    topo.features[j].properties.Age20_45 = DataYear[i].Age20_45;
+                    topo.features[j].properties.Age45_65 = DataYear[i].Age45_65;
+                    topo.features[j].properties.Age65_80 = DataYear[i].Age65_80;
+                    topo.features[j].properties.Age80 = DataYear[i].Age80;
                     break;
                 }
             }
@@ -171,7 +177,17 @@ function createNLMap(yearid) {
                    .style("opacity", .9);
 
                 div.html(function() {
-                        return "<strong>" + d.properties.statnaam + "</strong>" + '<br>Biggest political movement: ' + d.properties.MovName + '<br>Biggest party: ' + d.properties.PartyName;
+                        console.log(d.properties);
+                        return "<strong>" + d.properties.statnaam + "</strong>" +
+                               '<br>Biggest political movement: <strong>' + d.properties.MovName + "</strong>" +
+                               '<br>Biggest party: <strong>' + d.properties.PartyName + "</strong>" +
+                               '<br>Voters Age Demographic:' +
+                               '<table style="width:70%">' +
+                               '<tr><td>18-20</td><td style="text-align:right">' + d.properties.Age20.toLocaleString('en') + '</td></tr>' +
+                               '<tr><td>20-45</td><td style="text-align:right">' + d.properties.Age20_45.toLocaleString('en') + '</td></tr>' +
+                               '<tr><td>45-65</td><td style="text-align:right">' + d.properties.Age45_65.toLocaleString('en') + '</td></tr>' +
+                               '<tr><td>65-80</td><td style="text-align:right">' + d.properties.Age65_80.toLocaleString('en') + '</td></tr>' +
+                               '<tr><td>80+</td><td style="text-align:right">' + d.properties.Age80.toLocaleString('en') + '</td></tr></table>';
                     })
                    .style("left", (d3.event.pageX + 50) + "px")
                    .style("top", (d3.event.pageY - 50) + "px");

@@ -99,7 +99,9 @@ function createTreemap(data) {
                    .duration(200)
                    .style("opacity", .9);
             tooltip.html(function() {
-                        return "<strong>" + d.data.name + "</strong>" + '<br>Political movement: ' + d.parent.data.name + '<br>Votes: ' + d.data.votes.toLocaleString('en');
+                        return "<strong>" + d.data.name + "</strong>" +
+                               '<br>Political movement: <strong>' + d.parent.data.name + "</strong>" +
+                               '<br>Votes: <strong>' + d.data.votes.toLocaleString('en') + "</strong>";
                    })
                    .style("left", (d3.event.pageX + 50) + "px")
                    .style("top", (d3.event.pageY - 50) + "px");
