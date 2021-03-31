@@ -80,7 +80,7 @@ function createNLMap(yearid) {
 
     function ready(error, topo, data) {
         var DataYear = data.children[yearid].children;
-        console.log(data)
+
         for (var i = 0; i<DataYear.length; i++) {
             var ProvinceData = DataYear[i].name;
             //console.log(ProvinceData)
@@ -103,6 +103,12 @@ function createNLMap(yearid) {
                     topo.features[j].properties.PartyName = MaxParty.name;
                     topo.features[j].properties.PartyVotes= MaxParty.votes;
                     topo.features[j].properties.PartyPercVotes = Math.round((MaxParty.votes / TotalVotes) * 100 * 10) / 10;
+                    topo.features[j].properties.Voters = DataYear[i].Kiesgerechtigden;
+                    topo.features[j].properties.Age20 = DataYear[i].Age20;
+                    topo.features[j].properties.Age20_45 = DataYear[i].Age20_45;
+                    topo.features[j].properties.Age45_65 = DataYear[i].Age45_65;
+                    topo.features[j].properties.Age65_80 = DataYear[i].Age65_80;
+                    topo.features[j].properties.Age80 = DataYear[i].Age80;
                     break;
                 }
             }
@@ -174,7 +180,17 @@ function createNLMap(yearid) {
                    .style("opacity", .9);
 
                 div.html(function() {
-                        return "<strong>" + d.properties.statnaam + "</strong>" + '<br><br>Biggest political movement: <br>' + d.properties.MovName + ' (' + d.properties.MovPercVotes + '% of votes)' + '<br>Biggest party: <br>' + d.properties.PartyName + ' (' + d.properties.PartyPercVotes + '% of votes)';
+                        console.log(d.properties);
+                        return "<strong>" + d.properties.statnaam + "</strong>" +
+                               '<br>Biggest political movement: <strong>' + d.properties.MovName + "</strong>" +
+                               '<br>Biggest party: <strong>' + d.properties.PartyName + "</strong>" +
+                               '<br>Age Demographic:' +
+                               '<table style="width:70%">' +
+                               '<tr><td>0-20</td><td style="text-align:right">' + d.properties.Age20.toLocaleString('en') + '</td></tr>' +
+                               '<tr><td>20-45</td><td style="text-align:right">' + d.properties.Age20_45.toLocaleString('en') + '</td></tr>' +
+                               '<tr><td>45-65</td><td style="text-align:right">' + d.properties.Age45_65.toLocaleString('en') + '</td></tr>' +
+                               '<tr><td>65-80</td><td style="text-align:right">' + d.properties.Age65_80.toLocaleString('en') + '</td></tr>' +
+                               '<tr><td>80+</td><td style="text-align:right">' + d.properties.Age80.toLocaleString('en') + '</td></tr></table>';
                     })
                    .style("left", (d3.event.pageX + 50) + "px")
                    .style("top", (d3.event.pageY - 50) + "px");
