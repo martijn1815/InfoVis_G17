@@ -181,9 +181,9 @@ function createNLMap(yearid) {
                         return "<strong>" + d.properties.statnaam + "</strong>" +
                                '<br>Biggest political movement: <strong>' + d.properties.MovName + "</strong>" +
                                '<br>Biggest party: <strong>' + d.properties.PartyName + "</strong>" +
-                               '<br>Voters Age Demographic:' +
+                               '<br>Age Demographic:' +
                                '<table style="width:70%">' +
-                               '<tr><td>18-20</td><td style="text-align:right">' + d.properties.Age20.toLocaleString('en') + '</td></tr>' +
+                               '<tr><td>0-20</td><td style="text-align:right">' + d.properties.Age20.toLocaleString('en') + '</td></tr>' +
                                '<tr><td>20-45</td><td style="text-align:right">' + d.properties.Age20_45.toLocaleString('en') + '</td></tr>' +
                                '<tr><td>45-65</td><td style="text-align:right">' + d.properties.Age45_65.toLocaleString('en') + '</td></tr>' +
                                '<tr><td>65-80</td><td style="text-align:right">' + d.properties.Age65_80.toLocaleString('en') + '</td></tr>' +
