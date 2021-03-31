@@ -182,8 +182,8 @@ function createNLMap(yearid) {
                 div.html(function() {
                         console.log(d.properties);
                         return "<strong>" + d.properties.statnaam + "</strong>" +
-                               '<br>Biggest political movement: <strong>' + d.properties.MovName + "</strong>" +
-                               '<br>Biggest party: <strong>' + d.properties.PartyName + "</strong>" +
+                               '<br>Biggest political movement: <strong>' + d.properties.MovName + " (" + + d.properties.MovPercVotes + "%)</strong>" +
+                               '<br>Biggest party: <strong>' + d.properties.PartyName + " (" + d.properties.PartyPercVotes + "%)</strong>" +
                                '<br>Age Demographic:' +
                                '<table style="width:70%">' +
                                '<tr><td>0-20</td><td style="text-align:right">' + d.properties.Age20.toLocaleString('en') + '</td></tr>' +
