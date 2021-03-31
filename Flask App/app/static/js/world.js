@@ -177,7 +177,6 @@ function createNLMap(yearid) {
                    .style("opacity", .9);
 
                 div.html(function() {
-                        console.log(d.properties);
                         return "<strong>" + d.properties.statnaam + "</strong>" +
                                '<br>Biggest political movement: <strong>' + d.properties.MovName + "</strong>" +
                                '<br>Biggest party: <strong>' + d.properties.PartyName + "</strong>" +
