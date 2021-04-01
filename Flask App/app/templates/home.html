@@ -90,15 +90,12 @@
 
     d3.json("static/data/data.json", function(error, data) {
         if (error) throw error;
-        console.log(data);
-
         node = createTreemap(data);
 
         //Put slider update functions here:
         d3.select("#yearRange").on("change", function change() {
             YearID = this.value;
             if (YearID < 18 && selectedRegion == "Flevoland") {selectedRegion = "Total"};
-
             updateNLMap(YearID);
             updateTreemap(data, node, YearID);
         });
@@ -108,7 +105,6 @@
         });
 
         d3.selectAll("input[class='radio_Mov']").on("change", function(){
-            console.log(this.value)
             createStackedchart(this.value)
         });
      });

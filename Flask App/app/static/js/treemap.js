@@ -18,18 +18,12 @@ function getID(d, x) {
 
 
 function updateTreemap(data, node, YearID) {
-    console.log("Update - Treemap: year");
 
-    //var YearID = this.value;
-    //console.log(YearID);
-
-    //YearID = getID(data.children, year);
      RegionID = getID(data.children[YearID].children, selectedRegion);
 
      const newRoot = d3.hierarchy(data.children[YearID].children[RegionID], (d) => d.children)
                        .sum((d) => d.votes2);
 
-     console.log(data.children[YearID].children[RegionID]);
 
      node.data(treemap(newRoot).leaves());
 
@@ -59,13 +53,11 @@ function updateTreemap(data, node, YearID) {
 
 
 function createTreemap(data) {
-    console.log("TEST: treemap called");
 
     const margin_tm = {top: 10, right: 0, bottom: 10, left: 5},
           width_tm = 480 - margin_tm.left - margin_tm.right,
           height_tm = 500 - margin_tm.top - margin_tm.bottom;
 
-    //const color = d3.scaleOrdinal().range(d3.schemeSet1);
     treemap.size([width_tm, height_tm]);
 
     const div = d3.select("#treemap")

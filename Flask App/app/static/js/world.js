@@ -4,23 +4,17 @@ function getMaxMov(arr, prop) {
         if (max == null || parseInt(arr[i][prop]) > parseInt(max[prop]))
             max = arr[i];
     }
-    //console.log(max)
     return max;
 };
 
 
 function getMaxPary(arr, prop) {
     var max;
-    //console.log(arr)
     for (var i=0; i<arr.length;i++) {
-        //console.log(arr[i])
-        //console.log()
          for (var j=0; j<arr[i].children.length;j++) {
             if (max == null || parseInt(arr[i].children[j][prop]) > parseInt(max[prop]))
             max = arr[i].children[j];
-
          };
-
     };
     return max;
 };
@@ -45,8 +39,6 @@ function updateNLMap(YearID) {
 
 
 function createNLMap(yearid) {
-    // Setting the margin_map, height_map and width_map variables
-    // Adding a svg
     var YearID2 = yearid
 
     var box = d3.select("#map_netherlands")
@@ -57,7 +49,6 @@ function createNLMap(yearid) {
           width_map = 480 - margin_map.left - margin_map.right,
           height_map = 500 - margin_map.top - margin_map.bottom;
 
-    //var color = d3.scaleOrdinal().range(d3.schemeSet1);
 
     var svg = d3.select("#map_box")
                 .append("svg")
@@ -83,12 +74,10 @@ function createNLMap(yearid) {
 
         for (var i = 0; i<DataYear.length; i++) {
             var ProvinceData = DataYear[i].name;
-            //console.log(ProvinceData)
             var TotalVotes = DataYear[i].GeldigeStemmen;
             var MaxMov = getMaxMov(DataYear[i].children, "votes");
             var MaxParty = getMaxPary(DataYear[i].children, "votes");
-            //console.log(MaxMov)
-            //console.log(MaxParty)
+
             if (ProvinceData == "FryslÃ¢n") {
                 ProvinceData = "Fryslân"
             }
@@ -113,7 +102,7 @@ function createNLMap(yearid) {
                 }
             }
         };
-        console.log(topo)
+
         // Draw the map
 
         var center = d3.geoCentroid(topo);
@@ -216,7 +205,8 @@ function createNLMap(yearid) {
                                        .style("stroke-width", 3);
                         d3.select('#yearRangeShadow').dispatch('change');
                     }
-                    console.log(selectedRegion);
+
+
                 }
            });
     };

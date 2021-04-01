@@ -2,16 +2,12 @@
 function createStackedchart(value) {
     d3.select("#chartbox").remove()
 
-    console.log("TEST: Stackedchart called");
-    console.log(value)
     // set the dimensions and margins of the graph
     var margin = {top: 5, right: 0, bottom: 20, left: 60},
         width = 960 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-
-
     var svg = d3.select("#stacked_bar_chart")
                 .append("svg")
                 .attr("id", "chartbox")
@@ -22,34 +18,24 @@ function createStackedchart(value) {
 
     // Parse the Data
     d3.csv("static/data/data_stack_v3.csv", function(data) {
-    //d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered_wide.csv", function(data) {
 
         /////////////
         // GENERAL //
         /////////////
-
-        //console.log(data);
 
         // List of groups = header of the csv files
         var keys = data.columns.slice(2);
 
         if (value == "percentages") {
             for (var i=0; i<data.length;i++) {
-                //console.log(data[i])
                 var Total_votes = parseInt(data[i][keys[0]]) + parseInt(data[i][keys[1]]) + parseInt(data[i][keys[2]]) + parseInt(data[i][keys[3]])
-                //console.log(Total_votes)
                 for (j=0; j<keys.length;j++) {
                     data[i][keys[j]] = (data[i][keys[j]] / Total_votes) * 100
-                    //console.log(keys[j])
+
                 };
             };
         };
 
-        console.log(data);
-        // color palette
-        //var color = d3.scaleOrdinal()
-        //              .domain(keys)
-        //              .range(d3.schemeSet1);
 
         //stack the data?
         var stackedData = d3.stack()
@@ -168,7 +154,6 @@ function createStackedchart(value) {
 
         // What to do when one group is hovered
         var highlight = function(d){
-            console.log(d);
             // reduce opacity of all groups
             d3.selectAll(".myArea").style("opacity", .1);
             // expect the one that is hovered
@@ -221,7 +206,6 @@ function createStackedchart(value) {
         legend4.append('text')
             .attr("x", 25)
             .attr("y", 15)
-        //.attr("dy", ".35em")
             .text(function(d){ return d})
             .attr("class", "textselected")
             .style("text-anchor", "start")
