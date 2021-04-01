@@ -180,12 +180,11 @@ function createNLMap(yearid) {
                    .style("opacity", .9);
 
                 div.html(function() {
-                        console.log(d.properties);
                         return "<strong>" + d.properties.statnaam + "</strong>" +
                                '<br>Biggest political movement: <strong>' + d.properties.MovName + " (" + + d.properties.MovPercVotes + "%)</strong>" +
                                '<br>Biggest party: <strong>' + d.properties.PartyName + " (" + d.properties.PartyPercVotes + "%)</strong>" +
                                '<br>Age Demographic:' +
-                               '<table style="width:70%">' +
+                               '<table style="width:100px">' +
                                '<tr><td>0-20</td><td style="text-align:right">' + d.properties.Age20.toLocaleString('en') + '</td></tr>' +
                                '<tr><td>20-45</td><td style="text-align:right">' + d.properties.Age20_45.toLocaleString('en') + '</td></tr>' +
                                '<tr><td>45-65</td><td style="text-align:right">' + d.properties.Age45_65.toLocaleString('en') + '</td></tr>' +
